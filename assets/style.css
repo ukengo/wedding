@@ -466,13 +466,17 @@ section {
     background: transparent;
     color: var(--text-light);
     border: .0625rem solid var(--text-light);
-    padding: .5rem 8.5rem;
+    padding: 0.8rem 2rem;
+    width: 90%;
+    max-width: 400px;
     border-radius: 3.125rem;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 400;
     cursor: pointer;
     transition: all .3s ease;
-    z-index: 1
+    z-index: 1;
+    text-align: center;
+    white-space: nowrap;
 }
 
 .button-map:hover {
