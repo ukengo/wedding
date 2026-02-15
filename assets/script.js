@@ -117,22 +117,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const rect = container.getBoundingClientRect();
             const windowHeight = window.innerHeight;
-            const elementHeight = rect.height;
 
-            // Define trigger points
-            const startY = windowHeight * 0.9;
-            const endY = windowHeight * 0.1;
+            // Use screen center as reference point
+            const screenCenter = windowHeight / 2;
 
-            const startTop = startY;
-            const endTop = endY - elementHeight;
-
-            // Calculate progress (0 start, 1 end)
-            let progress = (rect.top - startTop) / (endTop - startTop);
+            // Calculate progress based on container's position relative to screen center
+            // progress will be 0 when top of container reaches center, and 1 when bottom reaches center
+            let progress = (screenCenter - rect.top) / rect.height;
 
             if (progress < 0) progress = 0;
             if (progress > 1) progress = 1;
 
-            // Invert progress
+            // pathProgress 0 (start of path) to 1 (end of path)
+            // The path in SVG starts at bottom (M260 1440) and ends at top (S... 173.5 30)
+            // So we use (1 - progress) to go from 0 (start/bottom) to 1 (end/top)
             const pathProgress = 1 - progress;
 
             const point = snakePath.getPointAtLength(pathLength * pathProgress);
