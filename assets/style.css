@@ -1055,8 +1055,8 @@ section {
 }
 
 .snake-icon-fa {
-    font-size: 24px;
-    color: #7E1023;
+    font-size: 64px;
+    color: var(--accent-blue);
     margin-bottom: 10px;
 }
 
@@ -1083,50 +1083,53 @@ section {
 }
 
 .snake-program-item.s-ceremony {
-    top: 17.2%;
-    left: 65%;
+    top: 13%;
+    left: 50%;
     align-items: flex-start;
     text-align: left;
 }
 
 .snake-program-item.s-welcome {
-    top: 34.4%;
-    right: 65%;
+    top: 30%;
+    right: 50%;
     align-items: flex-end;
     text-align: right;
 }
 
 .snake-program-item.s-banquet {
-    top: 51.2%;
-    left: 65%;
+    top: 46%;
+    left: 50%;
     align-items: flex-start;
     text-align: left;
 }
 
 .snake-program-item.s-cake {
-    top: 69.1%;
+    top: 66%;
     right: 65%;
     align-items: flex-end;
     text-align: right;
 }
 
 .snake-program-item.s-finale {
-    top: 82.7%;
-    left: 65%;
+    top: 80%;
+    left: 50%;
     align-items: flex-start;
     text-align: left;
 }
 
 .snake-pomegranate {
     position: absolute;
-    width: 50px;
-    height: auto;
+    font-size: 58px;
+    color: var(--accent-blue);
     z-index: 20;
     top: 0;
     left: 0;
     transform: translate(-50%, -50%);
     opacity: 0;
     transition: opacity 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .snake-pomegranate.visible {
@@ -1139,7 +1142,7 @@ section {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
     .snake-program-section {
         min-height: 1500px;
     }
@@ -1149,18 +1152,18 @@ section {
     }
 
     .snake-time {
-        font-size: 24px;
+        /* font-size: 24px; */
     }
 
     .snake-card-title {
-        font-size: 20px;
+        /* font-size: 20px; */
     }
 
     .snake-text {
-        font-size: 14px;
+        /* font-size: 14px; */
     }
 
     .snake-icon-fa {
-        font-size: 18px;
+        /* font-size: 18px; */
     }
 }
