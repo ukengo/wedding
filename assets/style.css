@@ -1118,7 +1118,7 @@ section {
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
     opacity: 0;
     transform: translateY(20px);
-    line-height: .8;
+    line-height: .8;    
 }
 
 .snake-program-item.visible {
@@ -1133,7 +1133,7 @@ section {
 }
 
 .snake-time {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Caveat', sans-serif;
     font-size: 32px;
     font-weight: 700;
     color: #181818;
@@ -1141,15 +1141,15 @@ section {
 }
 
 .snake-card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
+    font-family: 'Caveat', sans-serif;
+    font-size: 30px;
     margin: 5px 0;
     color: #181818;
 }
 
 .snake-text {
-    font-family: 'Arial', sans-serif;
-    font-size: 18px;
+    font-family: 'Caveat', sans-serif;
+    font-size: 22px;
     line-height: 1.4;
     color: #181818;
 }
