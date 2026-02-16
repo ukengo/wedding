@@ -156,3 +156,49 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', updatePomegranatePosition);
     }
 });
+
+/* --- Envelope Loader Logic --- */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const envelopeLoader = document.getElementById('envelope-loader');
+    const envelopeVideo = document.getElementById('envelope-video');
+    const envelopeWrapper = document.querySelector('.envelope-wrapper');
+    const body = document.body;
+
+    if (envelopeLoader && envelopeVideo && envelopeWrapper) {
+        envelopeWrapper.addEventListener('click', () => {
+            // Запускаємо відео
+            envelopeVideo.play().catch(error => {
+                console.error("Playback failed:", error);
+                // На випадок помилки автозапуску/блокування просто приховаємо лоадер
+                finishLoading();
+            });
+
+            // Приховуємо натяк
+            const hint = document.querySelector('.click-hint');
+            if (hint) hint.style.opacity = '0';
+        });
+
+        // Чекаємо завершення відео
+        envelopeVideo.onended = () => {
+            finishLoading();
+        };
+    }
+
+    function finishLoading() {
+        if (!envelopeLoader) return;
+
+        envelopeLoader.classList.add('fade-out');
+
+        setTimeout(() => {
+            body.classList.remove('content-hidden');
+            envelopeLoader.style.display = 'none';
+            window.scrollTo(0, 0);
+
+            // Перезапуск анімацій
+            if (typeof f === 'function') f();
+
+            console.log("Welcome! Envelope sequence finished.");
+        }, 1000); // Час fade-out
+    }
+});
