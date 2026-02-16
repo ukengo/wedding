@@ -188,10 +188,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function finishLoading() {
         if (!envelopeLoader) return;
 
+        // Показуємо контент негайно, щоб не було білого екрану під час fade-out
+        body.classList.remove('content-hidden');
         envelopeLoader.classList.add('fade-out');
 
         setTimeout(() => {
-            body.classList.remove('content-hidden');
             envelopeLoader.style.display = 'none';
             window.scrollTo(0, 0);
 
