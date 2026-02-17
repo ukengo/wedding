@@ -11,7 +11,7 @@ html {
 }
 
 body {
-    font-family: Open Sans, sans-serif;
+    font-family: "Rubik", sans-serif;
     line-height: 1.6;
     color: #333;
     overflow-x: hidden
@@ -81,7 +81,7 @@ body.content-hidden>*:not(#envelope-loader) {
 
 .click-hint {
     margin-top: 20px;
-    font-family: Dancing Script, cursive;
+    font-family: "Dancing Script", cursive;
     font-size: 1.5rem;
     color: var(--accent-blue);
     animation: blink 2s infinite;
@@ -151,7 +151,7 @@ body.content-hidden>*:not(#envelope-loader) {
 }
 
 .nav-logo .logo-text {
-    font-family: Dancing Script, cursive;
+    font-family: "Dancing Script", cursive;
     font-size: 2rem;
     font-weight: 700;
     color: var(--accent-blue);
@@ -252,7 +252,7 @@ body.content-hidden>*:not(#envelope-loader) {
 }
 
 .hero-title {
-    font-family: Dancing Script, cursive;
+    font-family: "Dancing Script", cursive;
     font-size: 4.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
@@ -377,7 +377,6 @@ section {
 }
 
 .section-title {
-    font-family: Playfair Display, serif;
     font-size: 3rem;
     font-weight: 600;
     color: var(--text-dark);
@@ -457,7 +456,6 @@ section {
 }
 
 .timeline-content h3 {
-    font-family: Playfair Display, serif;
     font-size: 1.8rem;
     color: var(--accent-blue);
     margin-bottom: .5rem
@@ -510,8 +508,7 @@ section {
     font-size: 2rem
 }
 
-.detail-card h3 {
-    font-family: Playfair Display, serif;
+.detail-card h3 {    
     font-size: 1.5rem;
     color: var(--text-dark);
     margin-bottom: 1rem
@@ -530,7 +527,6 @@ section {
 }
 
 .map-container h3 {
-    font-family: Playfair Display, serif;
     font-size: 1.8rem;
     color: var(--text-dark);
     margin-bottom: 1.5rem;
@@ -825,7 +821,7 @@ section {
 }
 
 .footer-text h3 {
-    font-family: Dancing Script, cursive;
+    font-family: "Dancing Script", cursive;
     font-size: 2.5rem;
     color: var(--primary-blue);
     margin-bottom: .5rem
@@ -857,7 +853,6 @@ section {
 }
 
 .calendar-month {
-    font-family: Playfair Display, serif;
     font-size: 1.6rem;
     color: var(--text-dark)
 }
