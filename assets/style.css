@@ -150,25 +150,24 @@ body.content-hidden>*:not(#envelope-loader) {
     height: 4.375rem
 }
 
-.nav-logo .logo-text {
-    font-family: "Dancing Script", cursive;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--accent-blue);
-    text-shadow: .125rem .125rem .25rem var(--shadow);
-    white-space: nowrap;
+.nav-logo .logo-image {
+    height: 3rem;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 1rem
+    gap: 2rem
 }
 
 .nav-link {
     text-decoration: none;
     color: var(--text-dark);
     font-weight: 500;
+    font-size: 1.1rem;
     transition: all .3s ease;
     position: relative
 }
@@ -369,7 +368,7 @@ body.content-hidden>*:not(#envelope-loader) {
 }
 
 section {
-    padding: 5rem 0
+    padding: 1rem 0
 }
 
 .section-header {
@@ -547,7 +546,7 @@ section {
 
 .button-map {
     display: block;
-    margin: 2rem auto 0;
+    margin: .5rem auto;
     background: var(--white);
     color: var(--accent-blue);
     border: .125rem solid var(--accent-blue);
@@ -874,7 +873,7 @@ section {
     }
 }
 
-@media(max-width:768px) {
+@media(max-width:655px) {
     .hamburger {
         display: flex
     }
