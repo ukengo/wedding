@@ -203,3 +203,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000); // Час fade-out
     }
 });
+// 4. Scroll Indicator Interactivity
+document.addEventListener('DOMContentLoaded', () => {
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', () => {
+            const storySection = document.getElementById('story');
+            if (storySection) {
+                const offset = storySection.offsetTop - 70;
+                window.scrollTo({
+                    top: offset,
+                    behavior: 'smooth'
+                });
+            }
+        });
+        // Make it look clickable
+        scrollIndicator.style.cursor = 'pointer';
+    }
+});

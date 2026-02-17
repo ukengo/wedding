@@ -1275,10 +1275,20 @@ section {
     }
 
     .countdown-number {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .countdown-label {
-        font-size: 0.7rem;
+        font-size: 0.6rem;
     }
+}
+
+/* Scroll Indicator Enhancements */
+.scroll-indicator {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.scroll-indicator:hover {
+    transform: translate(-50%, -10px);
 }
