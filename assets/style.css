@@ -155,7 +155,8 @@ body.content-hidden>*:not(#envelope-loader) {
     font-size: 2rem;
     font-weight: 700;
     color: var(--accent-blue);
-    text-shadow: .125rem .125rem .25rem var(--shadow)
+    text-shadow: .125rem .125rem .25rem var(--shadow);
+    white-space: nowrap;
 }
 
 .nav-menu {
@@ -1045,6 +1046,10 @@ section {
 }
 
 @media(max-width:480px) {
+    .nav-logo .logo-text {
+        font-size: 1.6rem;
+    }
+
     .hero-title {
         font-size: 2.1rem
     }
