@@ -596,96 +596,6 @@ section {
     content: "сховати мапу"
 }
 
-.gallery {
-    background: var(--primary-blue)
-}
-
-.gallery-container {
-    position: relative;
-    max-width: 50rem;
-    margin: 0 auto
-}
-
-.gallery-slider {
-    position: relative;
-    height: 31.25rem;
-    border-radius: var(--border-radius-20);
-    overflow: hidden;
-    box-shadow: 0 .9375rem 2.5rem var(--shadow)
-}
-
-.gallery-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity .5s ease
-}
-
-.gallery-slide.active {
-    opacity: 1
-}
-
-.gallery-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover
-}
-
-.gallery-controls {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 1rem;
-    pointer-events: none
-}
-
-.gallery-btn {
-    background: #ffffffe6;
-    border: none;
-    width: 3.125rem;
-    height: 3.125rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all .3s ease;
-    pointer-events: all;
-    color: var(--accent-blue);
-    font-size: 1.2rem
-}
-
-.gallery-btn:hover {
-    background: var(--white);
-    transform: scale(1.1)
-}
-
-.gallery-dots {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem
-}
-
-.dot {
-    width: .75rem;
-    height: .75rem;
-    border-radius: 50%;
-    background: #f8b5c180;
-    cursor: pointer;
-    transition: all .3s ease
-}
-
-.dot.active {
-    background: var(--accent-blue);
-    transform: scale(1.2)
-}
 
 .rsvp {
     background: var(--secondary-blue)
@@ -1403,6 +1313,7 @@ section {
 .organizer-phone:hover {
     color: var(--accent-blue);
 }
+
 /* --- Dress Code Section --- */
 .dress-code {
     padding: 5rem 0;
@@ -1451,10 +1362,13 @@ section {
 
 .color-dot:hover {
     transform: scale(1.1);
-}@media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .dress-code {
         padding: 3rem 0;
     }
+
     .color-dot {
         width: 50px;
         height: 50px;
