@@ -162,7 +162,7 @@ body.content-hidden>*:not(#envelope-loader) {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem
+    gap: 1rem
 }
 
 .nav-link {
@@ -508,7 +508,7 @@ section {
     font-size: 2rem
 }
 
-.detail-card h3 {    
+.detail-card h3 {
     font-size: 1.5rem;
     color: var(--text-dark);
     margin-bottom: 1rem
@@ -748,13 +748,17 @@ section {
 
 .radio-label {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     cursor: pointer;
-    font-weight: 400
+    font-weight: 400;
+    padding: 0.5rem 0;
 }
 
 .radio-label input[type=radio] {
-    display: none
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .radio-custom {
@@ -762,9 +766,11 @@ section {
     height: 1.25rem;
     border: .125rem solid var(--primary-blue);
     border-radius: 50%;
-    margin-right: .5rem;
+    margin-right: 0.75rem;
+    margin-top: 0.2rem;
     position: relative;
-    transition: all .3s ease
+    transition: all .3s ease;
+    flex-shrink: 0;
 }
 
 .radio-label input[type=radio]:checked+.radio-custom {
@@ -1287,6 +1293,7 @@ section {
 .scroll-indicator:hover {
     transform: translate(-50%, -10px);
 }
+
 /* --- Music Control --- */
 .music-control {
     position: fixed;
@@ -1332,9 +1339,16 @@ section {
 }
 
 @keyframes rotateMusic {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}@media (max-width: 768px) {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
     .music-btn {
         width: 50px;
         height: 50px;
@@ -1388,4 +1402,61 @@ section {
 
 .organizer-phone:hover {
     color: var(--accent-blue);
+}
+/* --- Dress Code Section --- */
+.dress-code {
+    padding: 5rem 0;
+    background-color: var(--white);
+    text-align: center;
+}
+
+.dress-icon {
+    font-size: 2rem;
+    color: var(--accent-blue);
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.dress-code-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.dress-code-content p {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.color-palette {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.color-dot {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+    cursor: default;
+}
+
+.color-dot:hover {
+    transform: scale(1.1);
+}@media (max-width: 768px) {
+    .dress-code {
+        padding: 3rem 0;
+    }
+    .color-dot {
+        width: 50px;
+        height: 50px;
+    }
 }
