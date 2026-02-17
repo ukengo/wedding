@@ -1343,3 +1343,49 @@ section {
         font-size: 1.2rem;
     }
 }
+
+/* --- Organizer Section --- */
+.organizer {
+    padding: 4rem 0;
+    background: var(--cream);
+    text-align: center;
+}
+
+.organizer-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.organizer-title {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin: 1.5rem 0;
+    font-weight: 500;
+}
+
+.organizer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.organizer-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    color: var(--accent-blue);
+    font-weight: 700;
+}
+
+.organizer-phone {
+    font-size: 1.3rem;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 600;
+}
+
+.organizer-phone:hover {
+    color: var(--accent-blue);
+}
