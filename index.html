@@ -87,27 +87,56 @@
           <p class="venue-text">Київ, Україна</p>
         </div>
       </div>
-      <div class="countdown-container">
-        <h3 class="countdown-title">До нашого особливого дня залишилось:</h3>
-        <div class="countdown" id="countdown">
-          <div class="countdown-item">
-            <span class="countdown-number" id="days">0</span>
-            <span class="countdown-label">днів</span>
+      <section id="calendar" class="calendar">
+        <div class="calendar-card" style="margin: 0; width: 100%; max-width: none;">
+          <div class="calendar-top">
+            <h3 class="calendar-month">Червень 2026</h3>
           </div>
-          <div class="countdown-item">
-            <span class="countdown-number" id="hours">0</span>
-            <span class="countdown-label">годин</span>
-          </div>
-          <div class="countdown-item">
-            <span class="countdown-number" id="minutes">0</span>
-            <span class="countdown-label">хвилин</span>
-          </div>
-          <div class="countdown-item">
-            <span class="countdown-number" id="seconds">0</span>
-            <span class="countdown-label">секунд</span>
+          <div class="calendar-grid">
+            <div class="weekday">Пн</div>
+            <div class="weekday">Вт</div>
+            <div class="weekday">Ср</div>
+            <div class="weekday">Чт</div>
+            <div class="weekday">Пт</div>
+            <div class="weekday">Сб</div>
+            <div class="weekday">Нд</div>
+
+            <button class="day" style="transition: 0.3s;"><span>01</span></button>
+            <button class="day" style="transition: 0.3s;"><span>02</span></button>
+            <button class="day" style="transition: 0.3s;"><span>03</span></button>
+            <button class="day" style="transition: 0.3s;"><span>04</span></button>
+            <button class="day" style="transition: 0.3s;"><span>05</span></button>
+            <button class="day is-wedding" aria-label="06 червня – дата весілля" style="transition: 0.3s;">
+              <span>06</span>
+              <i class="fas fa-heart" aria-hidden="true"></i>
+            </button>
+            <button class="day" style="transition: 0.3s;"><span>07</span></button>
+            <button class="day" style="transition: 0.3s;"><span>08</span></button>
+            <button class="day" style="transition: 0.3s;"><span>09</span></button>
+            <button class="day" style="transition: 0.3s;"><span>10</span></button>
+            <button class="day" style="transition: 0.3s;"><span>11</span></button>
+            <button class="day" style="transition: 0.3s;"><span>12</span></button>
+            <button class="day" style="transition: 0.3s;"><span>13</span></button>
+            <button class="day" style="transition: 0.3s;"><span>14</span></button>
+            <button class="day" style="transition: 0.3s;"><span>15</span></button>
+            <button class="day" style="transition: 0.3s;"><span>16</span></button>
+            <button class="day" style="transition: 0.3s;"><span>17</span></button>
+            <button class="day" style="transition: 0.3s;"><span>18</span></button>
+            <button class="day" style="transition: 0.3s;"><span>19</span></button>
+            <button class="day" style="transition: 0.3s;"><span>20</span></button>
+            <button class="day" style="transition: 0.3s;"><span>21</span></button>
+            <button class="day" style="transition: 0.3s;"><span>22</span></button>
+            <button class="day" style="transition: 0.3s;"><span>23</span></button>
+            <button class="day" style="transition: 0.3s;"><span>24</span></button>
+            <button class="day" style="transition: 0.3s;"><span>25</span></button>
+            <button class="day" style="transition: 0.3s;"><span>26</span></button>
+            <button class="day" style="transition: 0.3s;"><span>27</span></button>
+            <button class="day" style="transition: 0.3s;"><span>28</span></button>
+            <button class="day" style="transition: 0.3s;"><span>29</span></button>
+            <button class="day" style="transition: 0.3s;"><span>30</span></button>
           </div>
         </div>
-      </div>
+      </section>
     </div>
     <div class="scroll-indicator">
       <div class="scroll-arrow"></div>
@@ -287,7 +316,7 @@
         <section id="dress-code" class="dress-code">
           <div class="section-header">
             <h2 class="section-title">
-              Дрес-код <i class="fas fa-tshirt dress-icon"></i>
+              Дрес-код
             </h2>
             <div class="title-decoration">
               <span class="decoration-line"></span>
@@ -386,10 +415,6 @@
               </label>
             </div>
           </div>
-          <div class="form-group">
-            <label for="message">Повідомлення для молодят</label>
-            <textarea id="message" name="message" rows="4" placeholder="Ваші побажання та привітання..."></textarea>
-          </div>
           <button type="submit" class="submit-btn">
             <span>Підтвердити</span>
             <i class="fas fa-heart"></i>
@@ -399,63 +424,37 @@
     </div>
   </section>
 
-  <section id="calendar" class="calendar">
+  <section id="countdown-section" class="countdown-section" style="background: var(--primary-blue); padding: 4rem 0;">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Дата весілля</h2>
+        <h2 class="section-title">Відлік часу</h2>
         <div class="title-decoration">
           <span class="decoration-line"></span>
           <i class="fas fa-heart decoration-heart"></i>
           <span class="decoration-line"></span>
         </div>
       </div>
-
-      <div class="calendar-card">
-        <div class="calendar-top">
-          <h3 class="calendar-month">Червень 2026</h3>
-        </div>
-        <div class="calendar-grid">
-          <div class="weekday">Пн</div>
-          <div class="weekday">Вт</div>
-          <div class="weekday">Ср</div>
-          <div class="weekday">Чт</div>
-          <div class="weekday">Пт</div>
-          <div class="weekday">Сб</div>
-          <div class="weekday">Нд</div>
-
-          <button class="day"><span>01</span></button>
-          <button class="day"><span>02</span></button>
-          <button class="day"><span>03</span></button>
-          <button class="day"><span>04</span></button>
-          <button class="day"><span>05</span></button>
-          <button class="day is-wedding" aria-label="06 червня – дата весілля">
-            <span>06</span>
-            <i class="fas fa-heart" aria-hidden="true"></i>
-          </button>
-          <button class="day"><span>07</span></button>
-          <button class="day"><span>08</span></button>
-          <button class="day"><span>09</span></button>
-          <button class="day"><span>10</span></button>
-          <button class="day"><span>11</span></button>
-          <button class="day"><span>12</span></button>
-          <button class="day"><span>13</span></button>
-          <button class="day"><span>14</span></button>
-          <button class="day"><span>15</span></button>
-          <button class="day"><span>16</span></button>
-          <button class="day"><span>17</span></button>
-          <button class="day"><span>18</span></button>
-          <button class="day"><span>19</span></button>
-          <button class="day"><span>20</span></button>
-          <button class="day"><span>21</span></button>
-          <button class="day"><span>22</span></button>
-          <button class="day"><span>23</span></button>
-          <button class="day"><span>24</span></button>
-          <button class="day"><span>25</span></button>
-          <button class="day"><span>26</span></button>
-          <button class="day"><span>27</span></button>
-          <button class="day"><span>28</span></button>
-          <button class="day"><span>29</span></button>
-          <button class="day"><span>30</span></button>
+      <div class="countdown-container"
+        style="background: rgba(255, 255, 255, 0.2); backdrop-filter: none; border-color: rgba(255,255,255,0.4); max-width: 600px; margin: 0 auto;">
+        <h3 class="countdown-title" style="text-align: center; color: var(--text-dark);">До нашого особливого дня
+          залишилось:</h3>
+        <div class="countdown" id="countdown">
+          <div class="countdown-item">
+            <span class="countdown-number" id="days">0</span>
+            <span class="countdown-label">днів</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="hours">0</span>
+            <span class="countdown-label">годин</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="minutes">0</span>
+            <span class="countdown-label">хвилин</span>
+          </div>
+          <div class="countdown-item">
+            <span class="countdown-number" id="seconds">0</span>
+            <span class="countdown-label">секунд</span>
+          </div>
         </div>
       </div>
     </div>
@@ -487,7 +486,7 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-text">
-          <h3>З любовʼю Сергій та Вікторія</h3>
+          <h3>З любовʼю,<br>Сергій та Вікторія</h3>
           <p>06 червня 2026</p>
           <p>Дякуємо, що будете з нами в цей особливий день!</p>
         </div>
