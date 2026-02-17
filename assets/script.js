@@ -174,6 +174,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 finishLoading();
             });
 
+            // Start Background Music
+            const bgMusic = document.getElementById('bg-music');
+            if (bgMusic) {
+                bgMusic.volume = 0.4; // Set volume to 40%
+                bgMusic.play().then(() => {
+                    const musicToggle = document.getElementById('music-toggle');
+                    if (musicToggle) musicToggle.classList.add('visible', 'playing');
+                }).catch(e => {
+                    console.log("Audio autoplay blocked, will wait for interaction.", e);
+                    // Show toggle even if play failed so user can start it
+                    const musicToggle = document.getElementById('music-toggle');
+                    if (musicToggle) musicToggle.classList.add('visible');
+                });
+            }
+
             // Приховуємо натяк
             const hint = document.querySelector('.click-hint');
             if (hint) hint.style.opacity = '0';
@@ -219,5 +234,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         // Make it look clickable
         scrollIndicator.style.cursor = 'pointer';
+    }
+});
+
+/* --- Music Toggle Logic --- */
+document.addEventListener('DOMContentLoaded', () => {
+    const bgMusic = document.getElementById('bg-music');
+    const musicToggle = document.getElementById('music-toggle');
+
+    if (musicToggle && bgMusic) {
+        const musicIcon = musicToggle.querySelector('i');
+
+        musicToggle.addEventListener('click', () => {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                musicToggle.classList.add('playing');
+                musicIcon.classList.remove('fa-play');
+                musicIcon.classList.add('fa-pause');
+            } else {
+                bgMusic.pause();
+                musicToggle.classList.remove('playing');
+                musicIcon.classList.remove('fa-pause');
+                musicIcon.classList.add('fa-play');
+            }
+        });
     }
 });
