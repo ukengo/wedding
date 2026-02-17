@@ -546,29 +546,30 @@ section {
 }
 
 .button-map {
-    position: absolute;
-    bottom: 1.875rem;
-    left: 50%;
-    transform: translate(-50%);
-    background: transparent;
-    color: var(--text-light);
-    border: .0625rem solid var(--text-light);
-    padding: 0.8rem 2rem;
-    width: 90%;
-    max-width: 400px;
+    display: block;
+    margin: 2rem auto 0;
+    background: var(--white);
+    color: var(--accent-blue);
+    border: .125rem solid var(--accent-blue);
+    padding: 1rem 2rem;
+    width: fit-content;
+    min-width: 250px;
     border-radius: 3.125rem;
-    font-size: 1.25rem;
-    font-weight: 400;
+    font-size: 1.1rem;
+    font-weight: 500;
     cursor: pointer;
     transition: all .3s ease;
     z-index: 1;
     text-align: center;
     white-space: nowrap;
+    box-shadow: 0 4px 15px var(--shadow);
 }
 
 .button-map:hover {
-    color: var(--text-light-hover);
-    border: .0625rem solid var(--text-light-hover)
+    background: var(--accent-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px var(--shadow);
 }
 
 .map {
