@@ -798,10 +798,72 @@ section {
     border: .0625rem solid rgba(99, 114, 253, .12);
     border-radius: .75rem;
     padding: .9rem 0;
+}
+
+/* Telegram Section */
+.telegram-section {
+    background: var(--soft-blue);
     text-align: center;
-    font-weight: 600;
-    color: var(--text-dark);
-    cursor: default
+    padding: 3rem 0;
+}
+
+.telegram-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.qr-code-container {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: var(--border-radius-20);
+    box-shadow: 0 .9375rem 2.5rem var(--shadow);
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.qr-code-container:hover {
+    transform: scale(1.05);
+}
+
+.qr-image {
+    width: 200px;
+    height: 200px;
+    display: block;
+}
+
+.telegram-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #0088cc;
+    /* Telegram brand color */
+    color: var(--white);
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+}
+
+.telegram-btn:hover {
+    background: #0077b5;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 136, 204, 0.4);
+}
+
+.telegram-btn i {
+    font-size: 1.3rem;
+}
+
+text-align: center;
+font-weight: 600;
+color: var(--text-dark);
+cursor: default
 }
 
 .day span {
