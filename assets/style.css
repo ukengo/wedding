@@ -754,7 +754,8 @@ section {
 .calendar {
     background: var(--primary-blue);
     background: transparent;
-    margin: 10px;
+    margin: 10px auto;
+    max-width: 30rem;
 }
 
 .calendar-card {
