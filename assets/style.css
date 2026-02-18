@@ -890,10 +890,13 @@ section {
 
 .day.is-wedding i {
     position: absolute;
-    right: .5rem;
-    top: .5rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     color: var(--accent-blue);
-    font-size: .9rem
+    font-size: 3rem;
+    z-index: 0;
+    opacity: 0.8;
 }
 
 .day.is-wedding span {
