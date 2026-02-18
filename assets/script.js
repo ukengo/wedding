@@ -1,12 +1,131 @@
 (function () { const e = document.createElement("link").relList; if (e && e.supports && e.supports("modulepreload")) return; for (const r of document.querySelectorAll('link[rel="modulepreload"]')) o(r); new MutationObserver(r => { for (const s of r) if (s.type === "childList") for (const i of s.addedNodes) i.tagName === "LINK" && i.rel === "modulepreload" && o(i) }).observe(document, { childList: !0, subtree: !0 }); function t(r) { const s = {}; return r.integrity && (s.integrity = r.integrity), r.referrerPolicy && (s.referrerPolicy = r.referrerPolicy), r.crossOrigin === "use-credentials" ? s.credentials = "include" : r.crossOrigin === "anonymous" ? s.credentials = "omit" : s.credentials = "same-origin", s } function o(r) { if (r.ep) return; r.ep = !0; const s = t(r); fetch(r.href, s) } })(); const d = document.querySelector(".hamburger"), u = document.querySelector(".nav-menu"), m = document.querySelectorAll(".nav-item"), c = { days: document.getElementById("days"), hours: document.getElementById("hours"), minutes: document.getElementById("minutes"), seconds: document.getElementById("seconds") }; new Date("2024-06-15T16:00:00").getTime(); d.addEventListener("click", () => { d.classList.toggle("active"), u.classList.toggle("active") }); m.forEach(n => { n.addEventListener("click", () => { d.classList.remove("active"), u.classList.remove("active") }) }); m.forEach(n => { n.addEventListener("click", e => { e.preventDefault(); const link = n.querySelector(".nav-link"); if (!link) return; const t = link.getAttribute("href"), o = document.querySelector(t); if (o) { const r = o.getBoundingClientRect().top + window.pageYOffset - 70; window.scrollTo({ top: r, behavior: "smooth" }) } }) });
 function h() { const n = new Date("2026-06-06T14:00:00").getTime(), e = new Date().getTime(), t = n - e, o = c.days, r = c.hours, s = c.minutes, i = c.seconds, l = document.querySelector(".countdown-title"), a = document.getElementById("celebration"); if (t > 0) { const y = Math.floor(t / 864e5), v = Math.floor(t % (1e3 * 60 * 60 * 24) / (1e3 * 60 * 60)), b = Math.floor(t % (1e3 * 60 * 60) / (1e3 * 60)), S = Math.floor(t % (1e3 * 60) / 1e3); o.textContent = y.toString().padStart(2, "0"), r.textContent = v.toString().padStart(2, "0"), s.textContent = b.toString().padStart(2, "0"), i.textContent = S.toString().padStart(2, "0"), l && (l.innerHTML = "Це наш особливий день! 🎉", l.innerHTML += "<br>", l.innerHTML += "До нашого весілля залишилось:"), a && (a.style.display = "none") } else o.textContent = "00", r.textContent = "00", s.textContent = "00", i.textContent = "00", l && (l.textContent = "Це наш особливий день! 🎉"), a && (a.style.display = "block"), clearInterval(countdownInterval) } setInterval(h, 1e3); h(); const E = { threshold: .1, rootMargin: "0px 0px -50px 0px" }, x = new IntersectionObserver(n => { n.forEach(e => { e.isIntersecting && e.target.classList.add("fade-in") }) }, E); document.addEventListener("DOMContentLoaded", () => { document.querySelectorAll(".timeline-item, .detail-card, .gallery-container, .rsvp-form-container").forEach(e => { x.observe(e) }) }); class L {
-    constructor() { this.form = document.getElementById("rsvpForm"), this.init() } init() { this.form.addEventListener("submit", t => this.handleSubmit(t)), this.form.querySelectorAll("input, select, textarea").forEach(t => { t.addEventListener("blur", () => this.validateField(t)), t.addEventListener("input", () => this.clearError(t)) }) } validateField(e) { const t = e.value.trim(), o = e.name; return this.clearError(e), e.hasAttribute("required") && !t ? (this.showError(e, "Це поле обов'язкове для заповнення"), !1) : o === "email" && t && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t) ? (this.showError(e, "Будь ласка, введіть коректну email адресу"), !1) : o === "phone" && t && !/^[\+]?[0-9\s\-\(\)]{10,}$/.test(t) ? (this.showError(e, "Будь ласка, введіть коректний номер телефону"), !1) : !0 } showError(e, t) { e.style.borderColor = "#e74c3c"; const o = document.createElement("div"); o.className = "error-message", o.style.color = "#e74c3c", o.style.fontSize = "0.9rem", o.style.marginTop = "0.5rem", o.textContent = t, e.parentNode.appendChild(o) } clearError(e) { e.style.borderColor = ""; const t = e.parentNode.querySelector(".error-message"); t && t.remove() } handleSubmit(e) { e.preventDefault(); const t = this.form.querySelectorAll("input, select, textarea"); let o = !0; if (t.forEach(i => { this.validateField(i) || (o = !1) }), !o) return; const r = this.form.querySelector(".submit-btn"), s = r.innerHTML; r.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Відправляємо...', r.disabled = !0, setTimeout(() => { this.showSuccessMessage(), this.form.reset(), r.innerHTML = s, r.disabled = !1 }, 2e3) } showSuccessMessage() {
-        const e = document.createElement("div"); e.className = "success-message", e.style.cssText = `
+    constructor() {
+        this.form = document.getElementById("rsvpForm");
+        if (this.form) {
+            this.init();
+        } else {
+            console.error("RSVP Form not found!");
+        }
+    }
+
+    init() {
+        this.form.addEventListener("submit", (e) => this.handleSubmit(e));
+        this.form.querySelectorAll("input, select, textarea").forEach(t => {
+            t.addEventListener("blur", () => this.validateField(t));
+            t.addEventListener("input", () => this.clearError(t));
+        });
+    }
+
+    validateField(e) {
+        const t = e.value.trim(),
+            o = e.name;
+        this.clearError(e);
+
+        if (e.hasAttribute("required") && !t) {
+            this.showError(e, "Це поле обов'язкове для заповнення");
+            return false;
+        }
+
+        if (o === "email" && t && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)) {
+            this.showError(e, "Будь ласка, введіть коректну email адресу");
+            return false;
+        }
+
+        if (o === "phone" && t && !/^[\+]?[0-9\s\-\(\)]{10,}$/.test(t)) {
+            this.showError(e, "Будь ласка, введіть коректний номер телефону");
+            return false;
+        }
+
+        return true;
+    }
+
+    showError(e, t) {
+        e.style.borderColor = "#e74c3c";
+        const o = document.createElement("div");
+        o.className = "error-message";
+        o.style.color = "#e74c3c";
+        o.style.fontSize = "0.9rem";
+        o.style.marginTop = "0.5rem";
+        o.textContent = t;
+        e.parentNode.appendChild(o);
+    }
+
+    clearError(e) {
+        e.style.borderColor = "";
+        const t = e.parentNode.querySelector(".error-message");
+        if (t) t.remove();
+    }
+
+    async handleSubmit(e) {
+        e.preventDefault();
+        console.log("Form submission started");
+
+        const t = this.form.querySelectorAll("input, select, textarea");
+        let o = !0;
+        if (t.forEach(i => {
+            this.validateField(i) || (o = !1)
+        }), !o) {
+            console.log("Validation failed");
+            return;
+        }
+
+        const r = this.form.querySelector(".submit-btn"),
+            s = r.innerHTML;
+        r.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Відправляємо...', r.disabled = !0;
+
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbx-WnDzRrgLpLHfNR2E6Ij2BjVmFr9nVuN66rvk2SHhkHB9UurZnLj1ZAaiXdZPGqjb0w/exec';
+
+        try {
+            const formData = new FormData(this.form);
+            const data = new URLSearchParams();
+            for (const pair of formData) {
+                data.append(pair[0], pair[1]);
+            }
+            console.log("Sending data:", Object.fromEntries(data));
+
+            // We use no-cors mode because Google Scripts don't valid CORS headers for redirects
+            await fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: data
+            });
+
+            console.log("Fetch completed (opaque)");
+
+            // Get attendance value
+            const attendance = formData.get('attendance');
+            this.showSuccessMessage(attendance);
+            this.form.reset();
+
+        } catch (error) {
+            console.error('Submission error:', error);
+            alert('Не вдалося відправити дані. Перевірте інтернет з\'єднання.');
+        } finally {
+            r.innerHTML = s;
+            r.disabled = !1;
+        }
+    }
+    showSuccessMessage(attendance) {
+        let title = "Дякуємо!";
+        let message = "Ваша відповідь успішно відправлена. Ми з нетерпінням чекаємо на зустріч з вами!";
+        let iconColor = "var(--primary-blue)";
+
+        if (attendance === 'yes') {
+            message = "З нетерпінням чекаємо на зустріч!";
+        } else if (attendance === 'no') {
+            message = "Дуже шкода, але надіємося, що ви передумаєте.";
+            // Optional: Change icon color or icon for 'no' case if desired, e.g., slightly grayish
+            // iconColor = "#95a5a6"; 
+        }
+
+        const e = document.createElement("div");
+        e.className = "success-message", e.style.cssText = `
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, #f8b5c1, #e8a2b8);
+            background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
             color: white;
             padding: 2rem;
             border-radius: 20px;
@@ -15,9 +134,9 @@ function h() { const n = new Date("2026-06-06T14:00:00").getTime(), e = new Date
             z-index: 10000;
             animation: fadeInUp 0.5s ease-out;
         `, e.innerHTML = `
-            <i class="fas fa-heart" style="font-size: 2rem; margin-bottom: 1rem; color: #d4af37;"></i>
-            <h3 style="margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Дякуємо!</h3>
-            <p>Ваша відповідь успішно відправлена. Ми з нетерпінням чекаємо на зустріч з вами!</p>
+            <i class="fas fa-heart" style="font-size: 2rem; margin-bottom: 1rem; color: ${iconColor};"></i>
+            <h3 style="margin-bottom: 1rem; font-family: 'Playfair Display', serif;">${title}</h3>
+            <p>${message}</p>
             <button onclick="this.parentElement.remove()" style="
                 background: rgba(255, 255, 255, 0.2);
                 border: 1px solid rgba(255, 255, 255, 0.3);
@@ -31,7 +150,9 @@ function h() { const n = new Date("2026-06-06T14:00:00").getTime(), e = new Date
                onmouseout="this.style.background='rgba(255, 255, 255, 0.2)'">
                 Закрити
             </button>
-        `, document.body.appendChild(e), setTimeout(() => { e.parentNode && e.remove() }, 5e3)
+        `, document.body.appendChild(e), setTimeout(() => {
+            e.parentNode && e.remove()
+        }, 5e3)
     }
 } document.addEventListener("DOMContentLoaded", () => { new L }); window.addEventListener("scroll", () => { const n = window.pageYOffset, e = document.querySelector(".hero"), t = document.querySelector(".hero-content"); if (e && t) { const o = n * -.5; t.style.transform = `translateY(${o}px)` } }); window.addEventListener("scroll", () => { const n = document.querySelector(".navbar"); window.scrollY > 100 ? (n.style.background = "rgba(255, 255, 255, 0.98)", n.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.15)") : (n.style.background = "rgba(255, 255, 255, 0.95)", n.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)") }); window.addEventListener("load", () => { document.body.classList.add("loading") }); function f() { document.querySelectorAll(".fade-in").forEach(e => { const t = window.innerHeight; e.getBoundingClientRect().top < t - 150 && (e.style.opacity = "1", e.style.transform = "translateY(0)") }) } window.addEventListener("scroll", f); document.addEventListener("DOMContentLoaded", () => { f() }); function C() {
     const n = document.createElement("div"); n.innerHTML = "💕", n.style.cssText = `

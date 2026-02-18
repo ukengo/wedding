@@ -609,7 +609,7 @@ section {
 
 .rsvp-form-container {
     max-width: 37.5rem;
-    margin: 0 auto
+    margin: 0 auto;
 }
 
 .rsvp-form {
@@ -661,7 +661,8 @@ section {
     align-items: flex-start;
     cursor: pointer;
     font-weight: 400;
-    padding: 0.5rem 0;
+    margin: 0;
+    padding: 0;
 }
 
 .radio-label input[type=radio] {
