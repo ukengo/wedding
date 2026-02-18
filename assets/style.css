@@ -302,8 +302,10 @@ body.content-hidden>*:not(#envelope-loader) {
     backdrop-filter: blur(.625rem);
     border-radius: var(--border-radius-20);
     padding: 2rem;
-    margin: 2rem 1rem;
-    border: .0625rem solid rgba(255, 255, 255, .2)
+    margin: 2rem auto;
+    border: .0625rem solid rgba(255, 255, 255, .2);
+    max-width: 38rem;
+
 }
 
 .countdown-title {

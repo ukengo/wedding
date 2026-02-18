@@ -1,78 +1,254 @@
-(function () { const e = document.createElement("link").relList; if (e && e.supports && e.supports("modulepreload")) return; for (const r of document.querySelectorAll('link[rel="modulepreload"]')) o(r); new MutationObserver(r => { for (const s of r) if (s.type === "childList") for (const i of s.addedNodes) i.tagName === "LINK" && i.rel === "modulepreload" && o(i) }).observe(document, { childList: !0, subtree: !0 }); function t(r) { const s = {}; return r.integrity && (s.integrity = r.integrity), r.referrerPolicy && (s.referrerPolicy = r.referrerPolicy), r.crossOrigin === "use-credentials" ? s.credentials = "include" : r.crossOrigin === "anonymous" ? s.credentials = "omit" : s.credentials = "same-origin", s } function o(r) { if (r.ep) return; r.ep = !0; const s = t(r); fetch(r.href, s) } })(); const d = document.querySelector(".hamburger"), u = document.querySelector(".nav-menu"), m = document.querySelectorAll(".nav-item"), c = { days: document.getElementById("days"), hours: document.getElementById("hours"), minutes: document.getElementById("minutes"), seconds: document.getElementById("seconds") }; new Date("2024-06-15T16:00:00").getTime(); d.addEventListener("click", () => { d.classList.toggle("active"), u.classList.toggle("active") }); m.forEach(n => { n.addEventListener("click", () => { d.classList.remove("active"), u.classList.remove("active") }) }); m.forEach(n => { n.addEventListener("click", e => { e.preventDefault(); const link = n.querySelector(".nav-link"); if (!link) return; const t = link.getAttribute("href"), o = document.querySelector(t); if (o) { const r = o.getBoundingClientRect().top + window.pageYOffset - 70; window.scrollTo({ top: r, behavior: "smooth" }) } }) });
-function h() { const n = new Date("2026-06-06T14:00:00").getTime(), e = new Date().getTime(), t = n - e, o = c.days, r = c.hours, s = c.minutes, i = c.seconds, l = document.querySelector(".countdown-title"), a = document.getElementById("celebration"); if (t > 0) { const y = Math.floor(t / 864e5), v = Math.floor(t % (1e3 * 60 * 60 * 24) / (1e3 * 60 * 60)), b = Math.floor(t % (1e3 * 60 * 60) / (1e3 * 60)), S = Math.floor(t % (1e3 * 60) / 1e3); o.textContent = y.toString().padStart(2, "0"), r.textContent = v.toString().padStart(2, "0"), s.textContent = b.toString().padStart(2, "0"), i.textContent = S.toString().padStart(2, "0"), l && (l.innerHTML = "Це наш особливий день! 🎉", l.innerHTML += "<br>", l.innerHTML += "До нашого весілля залишилось:"), a && (a.style.display = "none") } else o.textContent = "00", r.textContent = "00", s.textContent = "00", i.textContent = "00", l && (l.textContent = "Це наш особливий день! 🎉"), a && (a.style.display = "block"), clearInterval(countdownInterval) } setInterval(h, 1e3); h(); const E = { threshold: .1, rootMargin: "0px 0px -50px 0px" }, x = new IntersectionObserver(n => { n.forEach(e => { e.isIntersecting && e.target.classList.add("fade-in") }) }, E); document.addEventListener("DOMContentLoaded", () => { document.querySelectorAll(".timeline-item, .detail-card, .gallery-container, .rsvp-form-container").forEach(e => { x.observe(e) }) }); class L {
+(function () {
+    const relList = document.createElement("link").relList;
+    if (relList && relList.supports && relList.supports("modulepreload")) return;
+
+    for (const link of document.querySelectorAll('link[rel="modulepreload"]')) {
+        processPreload(link);
+    }
+
+    new MutationObserver(mutations => {
+        for (const mutation of mutations) {
+            if (mutation.type === "childList") {
+                for (const node of mutation.addedNodes) {
+                    if (node.tagName === "LINK" && node.rel === "modulepreload") {
+                        processPreload(node);
+                    }
+                }
+            }
+        }
+    }).observe(document, { childList: true, subtree: true });
+
+    function getFetchOpts(link) {
+        const opts = {};
+        if (link.integrity) opts.integrity = link.integrity;
+        if (link.referrerPolicy) opts.referrerPolicy = link.referrerPolicy;
+
+        if (link.crossOrigin === "use-credentials") {
+            opts.credentials = "include";
+        } else if (link.crossOrigin === "anonymous") {
+            opts.credentials = "omit";
+        } else {
+            opts.credentials = "same-origin";
+        }
+        return opts;
+    }
+
+    function processPreload(link) {
+        if (link.ep) return;
+        link.ep = true;
+        const opts = getFetchOpts(link);
+        fetch(link.href, opts);
+    }
+})();
+
+/* --- Navigation & Menu Logic --- */
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+const navItems = document.querySelectorAll(".nav-item");
+
+if (hamburger && navMenu) {
+    hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+    });
+}
+
+navItems.forEach(item => {
+    item.addEventListener("click", () => {
+        if (hamburger && navMenu) {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }
+    });
+
+    item.addEventListener("click", (e) => {
+        e.preventDefault();
+        const link = item.querySelector(".nav-link");
+        if (!link) return;
+
+        const href = link.getAttribute("href");
+        const targetSection = document.querySelector(href);
+
+        if (targetSection) {
+            const offsetTop = targetSection.getBoundingClientRect().top + window.pageYOffset - 70;
+            window.scrollTo({
+                top: offsetTop,
+                behavior: "smooth"
+            });
+        }
+    });
+});
+
+/* --- Countdown Logic --- */
+const countdownElements = {
+    days: document.getElementById("days"),
+    hours: document.getElementById("hours"),
+    minutes: document.getElementById("minutes"),
+    seconds: document.getElementById("seconds")
+};
+
+// Target Date: 06 June 2026, 14:00:00
+const WEDDING_DATE = new Date("2026-06-06T14:00:00").getTime();
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = WEDDING_DATE - now;
+
+    const daysEl = countdownElements.days;
+    const hoursEl = countdownElements.hours;
+    const minutesEl = countdownElements.minutes;
+    const secondsEl = countdownElements.seconds;
+
+    // We only access these to potentially show the "Time is up" message
+    const titleEl = document.querySelector(".countdown-title");
+    const celebrationEl = document.getElementById("celebration");
+
+    if (distance > 0) {
+        // Calculate time
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Update DOM
+        if (daysEl) daysEl.textContent = days.toString().padStart(2, "0");
+        if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, "0");
+        if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, "0");
+        if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, "0");
+
+        // IMPORTANT: We DO NOT overwrite titleEl here, preserving the HTML static text "Чекаємо на вас через..."
+        // If there was previously "Time is up" text, we might want to reset it, but since 
+        // the static HTML is correct, we just leave it alone.
+
+        if (celebrationEl) celebrationEl.style.display = "none";
+
+    } else {
+        // Time is up
+        if (daysEl) daysEl.textContent = "00";
+        if (hoursEl) hoursEl.textContent = "00";
+        if (minutesEl) minutesEl.textContent = "00";
+        if (secondsEl) secondsEl.textContent = "00";
+
+        if (titleEl) {
+            titleEl.innerHTML = "Це наш особливий день! 🎉";
+        }
+
+        if (celebrationEl) celebrationEl.style.display = "block";
+        clearInterval(countdownInterval);
+    }
+}
+
+const countdownInterval = setInterval(updateCountdown, 1000);
+updateCountdown(); // Initial call
+
+/* --- Intersection Observer for Animations --- */
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+};
+
+const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("fade-in");
+        }
+    });
+}, observerOptions);
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".timeline-item, .detail-card, .gallery-container, .rsvp-form-container").forEach(el => {
+        fadeObserver.observe(el);
+    });
+});
+
+/* --- RSVP Form Class --- */
+class RSVPForm {
     constructor() {
         this.form = document.getElementById("rsvpForm");
         if (this.form) {
             this.init();
         } else {
-            console.error("RSVP Form not found!");
+            // console.error("RSVP Form not found!");
         }
     }
 
     init() {
         this.form.addEventListener("submit", (e) => this.handleSubmit(e));
-        this.form.querySelectorAll("input, select, textarea").forEach(t => {
-            t.addEventListener("blur", () => this.validateField(t));
-            t.addEventListener("input", () => this.clearError(t));
+        this.form.querySelectorAll("input, select, textarea").forEach(input => {
+            input.addEventListener("blur", () => this.validateField(input));
+            input.addEventListener("input", () => this.clearError(input));
         });
     }
 
-    validateField(e) {
-        const t = e.value.trim(),
-            o = e.name;
-        this.clearError(e);
+    validateField(field) {
+        const value = field.value.trim();
+        const name = field.name;
+        this.clearError(field);
 
-        if (e.hasAttribute("required") && !t) {
-            this.showError(e, "Це поле обов'язкове для заповнення");
+        if (field.hasAttribute("required") && !value) {
+            this.showError(field, "Це поле обов'язкове для заповнення");
             return false;
         }
 
-        if (o === "email" && t && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)) {
-            this.showError(e, "Будь ласка, введіть коректну email адресу");
+        if (name === "email" && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+            this.showError(field, "Будь ласка, введіть коректну email адресу");
             return false;
         }
 
-        if (o === "phone" && t && !/^[\+]?[0-9\s\-\(\)]{10,}$/.test(t)) {
-            this.showError(e, "Будь ласка, введіть коректний номер телефону");
+        if (name === "phone" && value && !/^[\+]?[0-9\s\-\(\)]{10,}$/.test(value)) {
+            this.showError(field, "Будь ласка, введіть коректний номер телефону");
             return false;
         }
 
         return true;
     }
 
-    showError(e, t) {
-        e.style.borderColor = "#e74c3c";
-        const o = document.createElement("div");
-        o.className = "error-message";
-        o.style.color = "#e74c3c";
-        o.style.fontSize = "0.9rem";
-        o.style.marginTop = "0.5rem";
-        o.textContent = t;
-        e.parentNode.appendChild(o);
+    showError(element, message) {
+        element.style.borderColor = "#e74c3c";
+        const errorDiv = document.createElement("div");
+        errorDiv.className = "error-message";
+        errorDiv.style.color = "#e74c3c";
+        errorDiv.style.fontSize = "0.9rem";
+        errorDiv.style.marginTop = "0.5rem";
+        errorDiv.textContent = message;
+        element.parentNode.appendChild(errorDiv);
+
+        // Remove error after 3 seconds automatically (optional UX improvement)
+        setTimeout(() => {
+            if (errorDiv.parentNode) errorDiv.remove();
+            element.style.borderColor = "";
+        }, 3000);
     }
 
-    clearError(e) {
-        e.style.borderColor = "";
-        const t = e.parentNode.querySelector(".error-message");
-        if (t) t.remove();
+    clearError(element) {
+        element.style.borderColor = "";
+        const errorDiv = element.parentNode.querySelector(".error-message");
+        if (errorDiv) errorDiv.remove();
     }
 
     async handleSubmit(e) {
         e.preventDefault();
         console.log("Form submission started");
 
-        const t = this.form.querySelectorAll("input, select, textarea");
-        let o = !0;
-        if (t.forEach(i => {
-            this.validateField(i) || (o = !1)
-        }), !o) {
+        const inputs = this.form.querySelectorAll("input, select, textarea");
+        let isValid = true;
+
+        inputs.forEach(input => {
+            if (!this.validateField(input)) {
+                isValid = false;
+            }
+        });
+
+        if (!isValid) {
             console.log("Validation failed");
             return;
         }
 
-        const r = this.form.querySelector(".submit-btn"),
-            s = r.innerHTML;
-        r.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Відправляємо...', r.disabled = !0;
+        const submitBtn = this.form.querySelector(".submit-btn");
+        const originalBtnContent = submitBtn.innerHTML;
+
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Відправляємо...';
+        submitBtn.disabled = true;
 
         const scriptURL = 'https://script.google.com/macros/s/AKfycbx-WnDzRrgLpLHfNR2E6Ij2BjVmFr9nVuN66rvk2SHhkHB9UurZnLj1ZAaiXdZPGqjb0w/exec';
 
@@ -102,10 +278,11 @@ function h() { const n = new Date("2026-06-06T14:00:00").getTime(), e = new Date
             console.error('Submission error:', error);
             alert('Не вдалося відправити дані. Перевірте інтернет з\'єднання.');
         } finally {
-            r.innerHTML = s;
-            r.disabled = !1;
+            submitBtn.innerHTML = originalBtnContent;
+            submitBtn.disabled = false;
         }
     }
+
     showSuccessMessage(attendance) {
         let title = "Дякуємо!";
         let message = "Ваша відповідь успішно відправлена. Ми з нетерпінням чекаємо на зустріч з вами!";
@@ -115,12 +292,11 @@ function h() { const n = new Date("2026-06-06T14:00:00").getTime(), e = new Date
             message = "З нетерпінням чекаємо на зустріч!";
         } else if (attendance === 'no') {
             message = "Дуже шкода, але надіємося, що ви передумаєте.";
-            // Optional: Change icon color or icon for 'no' case if desired, e.g., slightly grayish
-            // iconColor = "#95a5a6"; 
         }
 
-        const e = document.createElement("div");
-        e.className = "success-message", e.style.cssText = `
+        const overlay = document.createElement("div");
+        overlay.className = "success-message";
+        overlay.style.cssText = `
             position: fixed;
             top: 50%;
             left: 50%;
@@ -133,11 +309,14 @@ function h() { const n = new Date("2026-06-06T14:00:00").getTime(), e = new Date
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
             z-index: 10000;
             animation: fadeInUp 0.5s ease-out;
-        `, e.innerHTML = `
+            min-width: 300px;
+        `;
+
+        overlay.innerHTML = `
             <i class="fas fa-heart" style="font-size: 2rem; margin-bottom: 1rem; color: ${iconColor};"></i>
             <h3 style="margin-bottom: 1rem; font-family: 'Playfair Display', serif;">${title}</h3>
             <p>${message}</p>
-            <button onclick="this.parentElement.remove()" style="
+            <button class="close-msg-btn" style="
                 background: rgba(255, 255, 255, 0.2);
                 border: 1px solid rgba(255, 255, 255, 0.3);
                 color: white;
@@ -146,16 +325,77 @@ function h() { const n = new Date("2026-06-06T14:00:00").getTime(), e = new Date
                 margin-top: 1rem;
                 cursor: pointer;
                 transition: all 0.3s ease;
-            " onmouseover="this.style.background='rgba(255, 255, 255, 0.3)'" 
-               onmouseout="this.style.background='rgba(255, 255, 255, 0.2)'">
+            ">
                 Закрити
             </button>
-        `, document.body.appendChild(e), setTimeout(() => {
-            e.parentNode && e.remove()
-        }, 5e3)
+        `;
+
+        document.body.appendChild(overlay);
+
+        // Add event listener to button
+        const closeBtn = overlay.querySelector('.close-msg-btn');
+        closeBtn.addEventListener('click', () => {
+            overlay.remove();
+        });
+
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+            if (overlay.parentNode) overlay.remove();
+        }, 5000);
     }
-} document.addEventListener("DOMContentLoaded", () => { new L }); window.addEventListener("scroll", () => { const n = window.pageYOffset, e = document.querySelector(".hero"), t = document.querySelector(".hero-content"); if (e && t) { const o = n * -.5; t.style.transform = `translateY(${o}px)` } }); window.addEventListener("scroll", () => { const n = document.querySelector(".navbar"); window.scrollY > 100 ? (n.style.background = "rgba(255, 255, 255, 0.98)", n.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.15)") : (n.style.background = "rgba(255, 255, 255, 0.95)", n.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)") }); window.addEventListener("load", () => { document.body.classList.add("loading") }); function f() { document.querySelectorAll(".fade-in").forEach(e => { const t = window.innerHeight; e.getBoundingClientRect().top < t - 150 && (e.style.opacity = "1", e.style.transform = "translateY(0)") }) } window.addEventListener("scroll", f); document.addEventListener("DOMContentLoaded", () => { f() }); function C() {
-    const n = document.createElement("div"); n.innerHTML = "💕", n.style.cssText = `
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    new RSVPForm();
+});
+
+/* --- Navbar Scroll Effect --- */
+window.addEventListener("scroll", () => {
+    const navbar = document.querySelector(".navbar");
+    if (!navbar) return;
+
+    if (window.scrollY > 100) {
+        navbar.style.background = "rgba(255, 255, 255, 0.98)";
+        navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.15)";
+    } else {
+        navbar.style.background = "rgba(255, 255, 255, 0.95)";
+        navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+    }
+});
+
+/* --- Hero Parallax --- */
+window.addEventListener("scroll", () => {
+    const offset = window.pageYOffset;
+    const heroContent = document.querySelector(".hero-content");
+
+    if (heroContent) {
+        const translateY = offset * -0.5;
+        heroContent.style.transform = `translateY(${translateY}px)`;
+    }
+});
+
+/* --- Body Load Class --- */
+window.addEventListener("load", () => {
+    document.body.classList.add("loading");
+});
+
+function handleScrollFade() {
+    document.querySelectorAll(".fade-in").forEach(el => {
+        const windowHeight = window.innerHeight;
+        if (el.getBoundingClientRect().top < windowHeight - 150) {
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+        }
+    });
+}
+window.addEventListener("scroll", handleScrollFade);
+document.addEventListener("DOMContentLoaded", handleScrollFade);
+
+/* --- Floating Hearts Animation --- */
+function createFloatingHeart() {
+    const heart = document.createElement("div");
+    heart.innerHTML = "💕";
+    heart.style.cssText = `
         position: fixed;
         top: 100vh;
         left: ${Math.random() * 100}vw;
@@ -164,39 +404,86 @@ function h() { const n = new Date("2026-06-06T14:00:00").getTime(), e = new Date
         pointer-events: none;
         z-index: 1000;
         animation: floatUp 6s linear forwards;
-    `, document.body.appendChild(n), setTimeout(() => { n.remove() }, 6e3)
-} const p = document.createElement("style"); p.textContent = `
+    `;
+    document.body.appendChild(heart);
+    setTimeout(() => { heart.remove() }, 6000);
+}
+
+// Add styles for floatUp animation
+const heartStyle = document.createElement("style");
+heartStyle.textContent = `
     @keyframes floatUp {
-        0% {
-            transform: translateY(0) rotate(0deg);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(-100vh) rotate(360deg);
-            opacity: 0;
-        }
+        0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
     }
-`; document.head.appendChild(p); setInterval(C, 3e3); document.addEventListener("click", n => { n.target.matches(".detail-card, .timeline-content, .gallery-slide") && T(n) }); function T(n) {
-    const e = document.createElement("div"), t = n.target.getBoundingClientRect(), o = Math.max(t.width, t.height), r = n.clientX - t.left - o / 2, s = n.clientY - t.top - o / 2; e.style.cssText = `
+`;
+document.head.appendChild(heartStyle);
+
+// Start hearts interval
+setInterval(createFloatingHeart, 3000);
+
+/* --- Click Ripple Effect on Cards --- */
+document.addEventListener("click", (e) => {
+    if (e.target.matches(".detail-card, .timeline-content, .gallery-slide")) {
+        createRipple(e);
+    }
+});
+
+function createRipple(e) {
+    const circle = document.createElement("div");
+    const rect = e.target.getBoundingClientRect();
+    const diameter = Math.max(rect.width, rect.height);
+    const radius = diameter / 2;
+
+    const x = e.clientX - rect.left - radius;
+    const y = e.clientY - rect.top - radius;
+
+    circle.style.cssText = `
         position: absolute;
-        width: ${o}px;
-        height: ${o}px;
-        left: ${r}px;
-        top: ${s}px;
+        width: ${diameter}px;
+        height: ${diameter}px;
+        left: ${x}px;
+        top: ${y}px;
         background: rgba(248, 181, 193, 0.3);
         border-radius: 50%;
         transform: scale(0);
         animation: ripple 0.6s linear;
         pointer-events: none;
-    `, n.target.style.position = "relative", n.target.style.overflow = "hidden", n.target.appendChild(e), setTimeout(() => { e.remove() }, 600)
-} const g = document.createElement("style"); g.textContent = `
+    `;
+
+    // Ensure parent is relative and hidden overflow
+    const previousPosition = e.target.style.position;
+    if (getComputedStyle(e.target).position === 'static') {
+        e.target.style.position = "relative";
+    }
+    e.target.style.overflow = "hidden";
+
+    e.target.appendChild(circle);
+
+    setTimeout(() => {
+        circle.remove();
+        // Restore if needed, but usually safe to leave as relative
+    }, 600);
+}
+
+const rippleStyle = document.createElement("style");
+rippleStyle.textContent = `
     @keyframes ripple {
         to {
             transform: scale(4);
             opacity: 0;
         }
     }
-`; document.head.appendChild(g); const q = document.querySelectorAll("button, .nav-link, .gallery-btn, .dot, .detail-card, .timeline-item"); q.forEach(n => { n.style.transition = "all 0.3s ease" }); console.log("💕 Wedding website loaded successfully! 💕");
+`;
+document.head.appendChild(rippleStyle);
+
+// Add transition to interactive elements
+const interactiveElements = document.querySelectorAll("button, .nav-link, .gallery-btn, .dot, .detail-card, .timeline-item");
+interactiveElements.forEach(el => {
+    el.style.transition = "all 0.3s ease";
+});
+
+console.log("💕 Wedding website loaded successfully! 💕");
 
 /* --- Snake Program Logic --- */
 
@@ -208,7 +495,7 @@ document.addEventListener('DOMContentLoaded', () => {
         threshold: 0.1
     };
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const snakeObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
@@ -219,7 +506,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const items = document.querySelectorAll('.snake-program-item');
     items.forEach(item => {
-        observer.observe(item);
+        snakeObserver.observe(item);
     });
 
     // 2. Snake Scroll Animation
@@ -251,8 +538,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (progress > 1) progress = 1;
 
             // pathProgress 0 (start of path) to 1 (end of path)
-            // The path in SVG starts at bottom (M260 1440) and ends at top (S... 173.5 30)
-            // So we use (1 - progress) to go from 0 (start/bottom) to 1 (end/top)
             const pathProgress = 1 - progress;
 
             const point = snakePath.getPointAtLength(pathLength * pathProgress);
@@ -286,6 +571,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const envelopeVideo = document.getElementById('envelope-video');
     const envelopeWrapper = document.querySelector('.envelope-wrapper');
     const body = document.body;
+
+    // Helper to finish loading manually
+    function finishLoading() {
+        if (!envelopeLoader) return;
+
+        // Показуємо контент негайно, щоб не було білого екрану під час fade-out
+        body.classList.remove('content-hidden');
+        envelopeLoader.classList.add('fade-out');
+
+        setTimeout(() => {
+            envelopeLoader.style.display = 'none';
+            window.scrollTo(0, 0);
+
+            // Re-trigger fade-in animations manually if needed
+            if (typeof handleScrollFade === 'function') handleScrollFade();
+
+            console.log("Welcome! Envelope sequence finished.");
+        }, 1000); // Час fade-out
+    }
 
     if (envelopeLoader && envelopeVideo && envelopeWrapper) {
         envelopeWrapper.addEventListener('click', () => {
@@ -321,26 +625,9 @@ document.addEventListener('DOMContentLoaded', () => {
             finishLoading();
         };
     }
-
-    function finishLoading() {
-        if (!envelopeLoader) return;
-
-        // Показуємо контент негайно, щоб не було білого екрану під час fade-out
-        body.classList.remove('content-hidden');
-        envelopeLoader.classList.add('fade-out');
-
-        setTimeout(() => {
-            envelopeLoader.style.display = 'none';
-            window.scrollTo(0, 0);
-
-            // Перезапуск анімацій
-            if (typeof f === 'function') f();
-
-            console.log("Welcome! Envelope sequence finished.");
-        }, 1000); // Час fade-out
-    }
 });
-// 4. Scroll Indicator Interactivity
+
+/* --- Scroll Indicator Interactivity --- */
 document.addEventListener('DOMContentLoaded', () => {
     const scrollIndicator = document.querySelector('.scroll-indicator');
     if (scrollIndicator) {
@@ -354,7 +641,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
-        // Make it look clickable
         scrollIndicator.style.cursor = 'pointer';
     }
 });
