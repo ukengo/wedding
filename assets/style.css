@@ -309,7 +309,9 @@ body.content-hidden>*:not(#envelope-loader) {
 .countdown-title {
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
-    font-weight: 500
+    font-weight: 500;
+    text-align: center;
+    color: var(--text-dark);
 }
 
 .countdown {
@@ -581,6 +583,10 @@ section {
     transition: all .8s ease
 }
 
+.map-frame {
+    border: 0;
+}
+
 #map-toggle:checked~.map {
     display: block;
     max-height: 25rem;
@@ -785,6 +791,12 @@ section {
     padding: 1.5rem 1.5rem 2rem
 }
 
+.hero-calendar-card {
+    margin: 0;
+    width: 100%;
+    max-width: none;
+}
+
 .calendar-top {
     display: flex;
     align-items: center;
@@ -816,6 +828,7 @@ section {
     border: .0625rem solid rgba(99, 114, 253, .12);
     border-radius: .75rem;
     padding: .9rem 0;
+    transition: 0.3s;
 }
 
 /* Telegram Section */
@@ -1452,6 +1465,30 @@ section {
     transition: transform 0.3s ease;
     position: relative;
     cursor: default;
+}
+
+.bg-primary-pink {
+    background-color: var(--primary-pink);
+}
+
+.bg-secondary-pink {
+    background-color: var(--secondary-pink);
+}
+
+.bg-accent-pink {
+    background-color: var(--accent-pink);
+}
+
+.bg-primary-blue {
+    background-color: var(--primary-blue);
+}
+
+.bg-secondary-blue {
+    background-color: var(--secondary-blue);
+}
+
+.bg-accent-blue {
+    background-color: var(--accent-blue);
 }
 
 .color-dot:hover {
