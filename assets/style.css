@@ -80,7 +80,7 @@ body.content-hidden>*:not(#envelope-loader) {
 }
 
 .click-hint {
-    margin-top: 20px;    
+    margin-top: 20px;
     font-size: 1.5rem;
     color: var(--accent-blue);
     animation: blink 2s infinite;
@@ -249,7 +249,7 @@ body.content-hidden>*:not(#envelope-loader) {
     animation: fadeInUp 1s ease-out
 }
 
-.hero-title {    
+.hero-title {
     font-size: 4.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
@@ -386,7 +386,8 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem
+    gap: 1rem;
+    margin-bottom: 1rem;
 }
 
 .decoration-line {
@@ -738,7 +739,7 @@ section {
     gap: 1rem
 }
 
-.footer-text h3 {    
+.footer-text h3 {
     font-size: 2.5rem;
     color: var(--primary-blue);
     margin-bottom: .5rem
@@ -1396,7 +1397,7 @@ section {
     align-items: center;
 }
 
-.organizer-name {    
+.organizer-name {
     font-size: 2.2rem;
     color: var(--accent-blue);
     font-weight: 700;

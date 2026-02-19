@@ -178,6 +178,31 @@ class RSVPForm {
             input.addEventListener("blur", () => this.validateField(input));
             input.addEventListener("input", () => this.clearError(input));
         });
+
+        // Add conditional logic for "Children" field based on attendance
+        this.attendanceRadios = this.form.querySelectorAll('input[name="attendance"]');
+        this.childrenSelect = document.getElementById('children');
+        this.childrenLabel = document.getElementById('children-label');
+
+        if (this.attendanceRadios.length && this.childrenSelect && this.childrenLabel) {
+            this.attendanceRadios.forEach(radio => {
+                radio.addEventListener('change', () => this.handleAttendanceChange());
+            });
+            // Initial check
+            this.handleAttendanceChange();
+        }
+    }
+
+    handleAttendanceChange() {
+        const selectedAttendance = this.form.querySelector('input[name="attendance"]:checked');
+        if (selectedAttendance && selectedAttendance.value === 'yes') {
+            this.childrenSelect.setAttribute('required', 'required');
+            this.childrenLabel.innerHTML = 'Кількість дітей до 18 років *';
+        } else {
+            this.childrenSelect.removeAttribute('required');
+            this.childrenLabel.innerHTML = 'Кількість дітей до 18 років';
+            this.clearError(this.childrenSelect);
+        }
     }
 
     validateField(field) {
@@ -190,14 +215,17 @@ class RSVPForm {
             return false;
         }
 
-        if (name === "email" && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-            this.showError(field, "Будь ласка, введіть коректну email адресу");
-            return false;
-        }
+        // Email validation removed as field is removed
 
-        if (name === "phone" && value && !/^[\+]?[0-9\s\-\(\)]{10,}$/.test(value)) {
-            this.showError(field, "Будь ласка, введіть коректний номер телефону");
-            return false;
+        if (name === "phone") {
+            if (!value) {
+                this.showError(field, "Це поле обов'язкове для заповнення");
+                return false;
+            }
+            if (!/^[\+]?[0-9\s\-\(\)]{10,}$/.test(value)) {
+                this.showError(field, "Будь ласка, введіть коректний номер телефону");
+                return false;
+            }
         }
 
         return true;
