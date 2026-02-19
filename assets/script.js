@@ -363,7 +363,8 @@ window.addEventListener("scroll", () => {
     }
 });
 
-/* --- Hero Parallax --- */
+/* --- Hero Parallax (Disabled to fix calendar scrolling distance) --- */
+/*
 window.addEventListener("scroll", () => {
     const offset = window.pageYOffset;
     const heroContent = document.querySelector(".hero-content");
@@ -373,6 +374,7 @@ window.addEventListener("scroll", () => {
         heroContent.style.transform = `translateY(${translateY}px)`;
     }
 });
+*/
 
 /* --- Body Load Class --- */
 window.addEventListener("load", () => {
