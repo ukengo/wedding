@@ -253,6 +253,7 @@ body.content-hidden>*:not(#envelope-loader) {
 }
 
 .hero-title {
+  font-family: 'Lobster';
   font-size: 4.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
