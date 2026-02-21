@@ -428,12 +428,15 @@ function createFloatingHeart() {
     heart.style.cssText = `
         position: fixed;
         top: 100vh;
-        left: ${Math.random() * 100}vw;
+        left: ${Math.random() * 90+5}vw;
         font-size: ${Math.random() * 20 + 10}px;
         color: #f8b5c1;
         pointer-events: none;
         z-index: 1000;
         animation: floatUp 6s linear forwards;
+        overflow: hidden;
+        white-space: nowrap;
+        user-select: none;
     `;
     document.body.appendChild(heart);
     setTimeout(() => { heart.remove() }, 6000);
@@ -444,7 +447,7 @@ const heartStyle = document.createElement("style");
 heartStyle.textContent = `
     @keyframes floatUp {
         0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-        100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
     }
 `;
 document.head.appendChild(heartStyle);

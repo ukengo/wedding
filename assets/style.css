@@ -8,6 +8,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -15,6 +16,8 @@ body {
     line-height: 1.6;
     color: #333;
     overflow-x: hidden;
+    position: relative;
+    width: 100%;
 }
 
 body.content-hidden {
@@ -57,7 +60,7 @@ body.content-hidden>*:not(#envelope-loader) {
     aspect-ratio: 4 / 3;
     /* Adjust this to match the desired visible area */
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: var(--border-radius-15);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
@@ -415,7 +418,7 @@ section {
 .timeline-item {
     display: flex;
     align-items: center;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
     opacity: 0;
     transform: translateY(3.125rem);
     transition: all .8s ease
@@ -1433,6 +1436,7 @@ section {
     padding: 5rem 0;
     background-color: var(--white);
     text-align: center;
+    border-radius: var(--border-radius-15);
 }
 
 .dress-code-content {
