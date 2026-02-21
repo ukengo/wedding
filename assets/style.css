@@ -287,12 +287,6 @@ body.content-hidden>*:not(#envelope-loader) {
   margin-bottom: 3rem
 }
 
-.date-text {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: .5rem
-}
-
 .venue-text {
   font-size: 1.2rem;
   opacity: .9
@@ -385,7 +379,12 @@ section {
   font-size: 3rem;
   font-weight: 600;
   color: var(--text-dark);
-  margin-bottom: 1rem
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.section-title span {
+    font-size: 1.8rem;  
 }
 
 .title-decoration {
