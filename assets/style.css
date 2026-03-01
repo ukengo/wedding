@@ -304,8 +304,8 @@ body.content-hidden>*:not(#envelope-loader) {
 
 }
 
-.countdown-title { 
-   font-family: 'Bad Script' sans-serif;
+.countdown-title {
+  font-family: 'Bad Script' sans-serif;
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
   font-weight: 500;
@@ -385,7 +385,7 @@ section {
 }
 
 .section-title span {
-    font-size: 1.8rem;  
+  font-size: 1.8rem;
 }
 
 .title-decoration {
