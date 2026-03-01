@@ -127,7 +127,7 @@ body.content-hidden>*:not(#envelope-loader) {
   --shadow: #0000001a;
   --shadow-hover: rgba(0, 0, 0, .15);
   --border-radius-15: .9375rem;
-  --border-radius-20: 1.25rem
+  --border-radius-20: 1.25rem;
 }
 
 .navbar {
@@ -139,7 +139,7 @@ body.content-hidden>*:not(#envelope-loader) {
   backdrop-filter: blur(.625rem);
   z-index: 1000;
   transition: all .3s ease;
-  box-shadow: 0 .125rem 1.25rem var(--shadow)
+  box-shadow: 0 .125rem 1.25rem var(--shadow);
 }
 
 .nav-container {
@@ -304,7 +304,8 @@ body.content-hidden>*:not(#envelope-loader) {
 
 }
 
-.countdown-title {  
+.countdown-title { 
+   font-family: 'Bad Script' sans-serif;
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
   font-weight: 500;

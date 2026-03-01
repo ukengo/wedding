@@ -424,7 +424,7 @@ document.addEventListener("DOMContentLoaded", handleScrollFade);
 /* --- Floating Hearts Animation --- */
 function createFloatingHeart() {
     const heart = document.createElement("div");
-    heart.innerHTML = "💕";
+    heart.innerHTML = "💍";
     heart.style.cssText = `
         position: fixed;
         top: 100vh;
