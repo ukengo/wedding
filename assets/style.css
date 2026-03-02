@@ -9,6 +9,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  scroll-padding-top: 4.375rem;
 }
 
 body {
@@ -208,7 +209,8 @@ body.content-hidden>*:not(#envelope-loader) {
 }
 
 .hero {
-  height: 100vh;
+  min-height: 100vh;
+  padding-top: 8.375rem;
   position: relative;
   display: flex;
   align-items: center;
