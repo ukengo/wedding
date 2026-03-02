@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  font-family: "Rubik", sans-serif;  
+  font-family: "Rubik", sans-serif;
   line-height: 1.6;
   color: #333;
   overflow-x: hidden;
@@ -1132,7 +1132,7 @@ section {
   position: relative;
   width: 100%;
   overflow: hidden;
-  background-color: #fffcf9;
+  background-color: transparent;
 }
 
 .snake-program-container {
@@ -1140,11 +1140,39 @@ section {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  z-index: 5;
 }
 
 .snake-program-content-wrapper {
   position: relative;
   width: 100%;
+  z-index: 5;
+}
+
+.program-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+
+.program-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.program-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 252, 249, 0.55);
+  /* Гарантоване перекриття поверх відео */
+  z-index: -1;
 }
 
 .snake-animation-container {
