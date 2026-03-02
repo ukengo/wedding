@@ -111,36 +111,39 @@ body.content-hidden>*:not(#envelope-loader) {
 }
 
 :root {
-  /* New Refined Palette */
+  /* Cinematic Couture Palette */
   --soft-beige: #D8C6BA;
   --warm-ivory: #F7F9FB;
   --dusty-rose: #D8CFC4;
-  --muted-blue: #9AB3CA;
+  --deep-slate: #2C3E50;
 
-  --primary-blue: var(--muted-blue);
+  --primary-blue: var(--deep-slate);
   --secondary-blue: #b3c8e0;
-  /* keeping for compatibility but slightly adjusted in mind */
   --accent-blue: #4680b3;
   --cream: var(--warm-ivory);
   --white: #ffffff;
-  --text-dark: #2C3E50;
-  --text-light: #5D6D7E;
+  --text-dark: #1A1A1A;
+  --text-light: #5F5F5F;
 
-  /* Typography Scale with clamp() */
-  --font-hero: 'Playfair Display', serif;
+  /* Typography Scale */
+  --font-hero: 'Bodoni Moda', serif;
   --font-body: 'Montserrat', sans-serif;
-  --font-accent: 'Dancing Script', cursive;
+  --font-accent: 'Charm', cursive;
 
-  --fs-hero: clamp(3rem, 10vw, 6.5rem);
-  --fs-h2: clamp(2rem, 6vw, 4rem);
-  --fs-h3: clamp(1.5rem, 4vw, 2.5rem);
-  --fs-body: clamp(1rem, 1.2vw, 1.125rem);
-  --fs-small: 0.875rem;
+  --fs-hero: clamp(3.2rem, 11vw, 7.5rem);
+  --fs-h2: clamp(2rem, 7vw, 4rem);
+  --fs-h3: clamp(1.4rem, 4.5vw, 2.2rem);
+  --fs-body: clamp(0.95rem, 1.1vw, 1.05rem);
+  --fs-small: 0.75rem;
 
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  --shadow-hover: 0 15px 45px rgba(0, 0, 0, 0.1);
-  --border-radius-15: 0.5rem;
-  --border-radius-20: 1rem;
+  --ls-tight: -0.04em;
+  --ls-normal: 0.02em;
+  --ls-wide: 0.15em;
+
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0 10px 40px rgba(0, 0, 0, 0.08);
+  --border-radius-15: 0.4rem;
+  --border-radius-20: 0.6rem;
 }
 
 .navbar {
@@ -269,27 +272,30 @@ body.content-hidden>*:not(#envelope-loader) {
 .hero-title {
   font-family: var(--font-hero);
   font-size: var(--fs-hero);
-  font-weight: 900;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  /* Bodoni Moda looks best at 400 for a luxury feel */
+  margin-bottom: 2rem;
+  letter-spacing: var(--ls-tight);
   text-shadow: none;
-  line-height: 1.1;
+  line-height: 0.95;
+  text-transform: none;
 }
 
 .hero-title .name {
   display: inline-block;
-  animation: float 3s ease-in-out infinite
-}
-
-.hero-title .name:nth-child(3) {
-  animation-delay: 1.5s
+  font-style: italic;
+  /* Vogue Style */
+  position: relative;
 }
 
 .hero-title .ampersand {
-  font-size: 3rem;
-  margin: 0 1rem;
-  color: var(--gold);
-  text-shadow: .125rem .125rem .25rem rgba(0, 0, 0, .3)
+  font-family: var(--font-accent);
+  font-size: 0.7em;
+  font-weight: 400;
+  margin: 0 0.5rem;
+  color: var(--text-dark);
+  opacity: 0.6;
+  vertical-align: middle;
 }
 
 .hero-subtitle {
@@ -395,11 +401,13 @@ section {
 .section-title {
   font-family: var(--font-hero);
   font-size: var(--fs-h2);
-  font-weight: 700;
+  font-weight: 400;
+  font-style: italic;
   color: var(--text-dark);
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  margin-bottom: 2rem;
+  line-height: 1.1;
+  letter-spacing: var(--ls-tight);
+  text-transform: none;
 }
 
 .section-title span {
@@ -1582,14 +1590,16 @@ section {
 
 .hero-invitation {
   font-family: var(--font-body);
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-bottom: 2rem;
-  opacity: 0.95;
-  line-height: 1.5;
-  max-width: 600px;
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  font-weight: 300;
+  margin-bottom: 3rem;
+  opacity: 0.8;
+  line-height: 1.8;
+  max-width: 500px;
   margin-left: auto;
   margin-right: auto;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
 }
 
 @media(max-width:480px) {
