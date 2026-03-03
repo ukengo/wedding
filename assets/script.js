@@ -428,7 +428,7 @@ function createFloatingHeart() {
     heart.style.cssText = `
         position: fixed;
         top: 100vh;
-        left: ${Math.random() * 90+5}vw;
+        left: ${Math.random() * 90 + 5}vw;
         font-size: ${Math.random() * 20 + 10}px;
         color: #f8b5c1;
         pointer-events: none;
@@ -594,6 +594,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Handle window resize
         window.addEventListener('resize', updatePomegranatePosition);
+    }
+    // 3. Set Program Video Speed
+    const programVideo = document.querySelector('.program-video video');
+    if (programVideo) {
+        programVideo.playbackRate = 0.3;
     }
 });
 
