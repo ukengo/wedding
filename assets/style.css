@@ -1377,7 +1377,7 @@ section {
 
 .snake-icon-fa {
   font-size: 64px;
-  color: var(--accent-blue);
+  color: var(--title-font-color);
   margin-bottom: 10px;
 }
 
@@ -1385,7 +1385,7 @@ section {
   font-family: var(--font-accent);
   font-size: 2rem;
   font-weight: 700;
-  color: #181818;
+  color: var(--title-font-color);
   margin-bottom: 5px;
 }
 
@@ -1393,14 +1393,14 @@ section {
   font-family: var(--font-hero);
   font-size: 1.8rem;
   margin: 5px 0;
-  color: #181818;
+  color: var(--title-font-color);
 }
 
 .snake-text {
   font-family: var(--font-body);
   font-size: 1.1rem;
   line-height: 1.4;
-  color: #181818;
+  color: var(--title-font-color);
 }
 
 .snake-program-item.s-ceremony {
@@ -1441,7 +1441,7 @@ section {
 .snake-pomegranate {
   position: absolute;
   font-size: 58px;
-  color: var(--accent-blue);
+  color: var(--title-font-color);
   z-index: 20;
   top: 0;
   left: 0;
