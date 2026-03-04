@@ -1590,9 +1590,9 @@ section {
 }
 
 .hero-invitation {
-  font-family: var(--font-body);
-  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
-  font-weight: 300;
+  font-family: "Princess Diana", cursive;
+  font-size: clamp(1.8rem, 2.5vw, 2.22rem);
+  font-weight: 400;
   margin-bottom: 3rem;
   opacity: 0.8;
   line-height: 1.8;
