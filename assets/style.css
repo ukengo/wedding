@@ -181,6 +181,21 @@ body.content-hidden>*:not(#envelope-loader) {
   width: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
+  animation: logo-pulse 4s ease-in-out infinite;
+}
+
+@keyframes logo-pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 .nav-menu {
