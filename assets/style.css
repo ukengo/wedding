@@ -170,6 +170,7 @@ body.content-hidden>*:not(#envelope-loader) {
   margin: 0 auto;
   padding: 0 1.25rem;
   display: flex;
+  gap: 15px;
   justify-content: space-between;
   align-items: center;
   height: 4.375rem
@@ -192,7 +193,8 @@ body.content-hidden>*:not(#envelope-loader) {
   text-decoration: none;
   color: var(--text-dark);
   font-weight: 500;
-  font-size: 1.1rem;
+  font-family: var(--font-body);
+  font-size: clamp(.95rem, 2vw, 1.2rem);
   transition: all .3s ease;
   position: relative
 }
@@ -223,11 +225,26 @@ body.content-hidden>*:not(#envelope-loader) {
 }
 
 .bar {
-  width: 1.5625rem;
-  height: .1875rem;
+  width: 1.8rem;
+  height: 2px;
   background: var(--text-dark);
-  margin: .1875rem 0;
-  transition: .3s
+  margin: 3px 0;
+  transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  border-radius: 2px;
+}
+
+/* Hamburger to X Animation */
+.hamburger.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.hamburger.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 .hero {
@@ -1089,23 +1106,49 @@ section {
 
   .nav-menu {
     position: fixed;
-    left: -100%;
     top: 4.375rem;
-    flex-direction: column;
-    background-color: var(--white);
+    left: 0;
     width: 100%;
-    text-align: center;
-    transition: .3s;
-    box-shadow: 0 .625rem 1.6875rem #0000000d;
-    padding: 2rem 0
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.98);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: height 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 999;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
   }
 
   .nav-menu.active {
-    left: 0
+    height: calc(100vh - 4.375rem);
   }
 
   .nav-menu li {
-    margin: 1rem 0
+    margin: 1.5rem 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+  }
+
+  .nav-menu.active li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered animation for menu items */
+  .nav-menu.active li:nth-child(1) { transition-delay: 0.1s; }
+  .nav-menu.active li:nth-child(2) { transition-delay: 0.2s; }
+  .nav-menu.active li:nth-child(3) { transition-delay: 0.3s; }
+  .nav-menu.active li:nth-child(4) { transition-delay: 0.4s; }
+  .nav-menu.active li:nth-child(5) { transition-delay: 0.5s; }
+
+  .nav-link {    
+    font-size: 1.6rem;    
+    letter-spacing: 2px;
+    color: var(--text-dark);
   }
 
   .hero-title {

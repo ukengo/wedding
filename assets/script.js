@@ -50,6 +50,13 @@ if (hamburger && navMenu) {
     hamburger.addEventListener("click", () => {
         hamburger.classList.toggle("active");
         navMenu.classList.toggle("active");
+
+        // Lock scroll when menu is active
+        if (navMenu.classList.contains("active")) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
     });
 }
 
@@ -58,6 +65,7 @@ navItems.forEach(item => {
         if (hamburger && navMenu) {
             hamburger.classList.remove("active");
             navMenu.classList.remove("active");
+            document.body.style.overflow = "";
         }
     });
 
