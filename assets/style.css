@@ -600,10 +600,16 @@ section {
 }
 
 .map-container h3 {
-  font-size: 1.8rem;
+  font-family: var(--font-hero);
+  font-size: var(--fs-h2);
+  font-weight: 400;
+  font-style: italic;
   color: var(--text-dark);
-  margin-bottom: 1.5rem;
-  text-align: center
+  margin-bottom: 2rem;
+  line-height: 1.1;
+  letter-spacing: var(--ls-tight);
+  text-transform: none;
+  text-align: center;
 }
 
 .location {
