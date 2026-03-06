@@ -1627,24 +1627,24 @@ section {
 @media (max-width: 480px) {
   .hero-title {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
     padding: 0 5vw;
-    gap: 0.5rem;
+    gap: 0.2rem 0.5rem;
   }
 
   .hero-title .name:first-of-type {
-    align-self: flex-start;
-    text-align: left;
-  }
-
-  .hero-title .name:last-of-type {
-    align-self: flex-end;
-    text-align: right;
+    flex: 0 0 auto;
   }
 
   .hero-title .ampersand {
-    align-self: center;
+    flex: 0 0 auto;
     margin: 0;
+  }
+
+  .hero-title .name:last-of-type {
+    flex: 0 0 100%;
+    text-align: right;
   }
 
   .calendar-card {
