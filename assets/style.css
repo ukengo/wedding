@@ -1662,20 +1662,21 @@ section {
   }
 
   .countdown {
-    gap: 0.5rem;
+    gap: 0.3rem;
   }
 
   .countdown-item {
-    min-width: 3.125rem;
-    padding: 0.5rem;
+    min-width: auto;
+    padding: 0.4rem;
+    flex: 1;
   }
 
   .countdown-number {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .countdown-label {
-    font-size: 0.6rem;
+    font-size: 0.55rem;
   }
 
   .rsvp-form {
@@ -1684,6 +1685,11 @@ section {
 
   .hero-invitation {
     padding: 0 1rem;
+  }
+
+  .countdown-container {
+    padding: 1.5rem 1rem;
+    margin: 1.5rem auto;
   }
 }
 
@@ -1709,6 +1715,26 @@ section {
   .hero-title .ampersand {
     align-self: center;
     margin: -1.2rem 0;
+  }
+
+  .countdown-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .countdown {
+    gap: 0.2rem;
+  }
+
+  .countdown-item {
+    padding: 0.3rem;
+  }
+
+  .countdown-number {
+    font-size: 0.9rem;
+  }
+
+  .countdown-label {
+    font-size: 0.5rem;
   }
 }
 
