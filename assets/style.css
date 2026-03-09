@@ -458,7 +458,7 @@ section {
   line-height: 1.1;
   letter-spacing: var(--ls-tight);
   text-transform: none;
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
 }
 
 .section-header-small {
@@ -466,12 +466,12 @@ section {
   font-size: var(--fs-h3);
   font-weight: 400;
   font-style: normal;
-  color: var(--title-font-color);
-  margin-bottom: 2rem;
+  color: var(--title-font-color);  
   text-align: center;
   line-height: 1.1;
   letter-spacing: var(--ls-tight);
   text-transform: none;
+  /* margin-bottom: 2rem; */
 }
 
 .snake-program-section .section-title {
@@ -628,7 +628,8 @@ section {
   height: 100%;
   border-radius: var(--border-radius-15);
   object-fit: cover;
-  box-shadow: 0 .3125rem .9375rem var(--shadow)
+  box-shadow: 0 .3125rem .9375rem var(--shadow);
+  margin-top: 2rem;
 }
 
 .button-map {
@@ -688,7 +689,7 @@ section {
 .rsvp-subtitle {
   font-size: 1.2rem;
   color: var(--text-light);
-  margin-top: 1rem
+  margin: 1rem
 }
 
 .rsvp-cash {
@@ -1747,4 +1748,4 @@ section {
   html {
     scroll-behavior: smooth;
   }
-}
+}
