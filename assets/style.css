@@ -153,6 +153,11 @@ body.content-hidden>*:not(#envelope-loader) {
   --border-radius-20: 0.6rem;
 }
 
+.date-text {
+  font-size: 0.65em;
+  opacity: 0.8;
+}
+
 .navbar {
   position: fixed;
   top: 0;
@@ -330,7 +335,7 @@ body.content-hidden>*:not(#envelope-loader) {
   position: relative;
 }
 
-.hero-title .name:nth-child(3) {}
+
 
 .hero-title .ampersand {
   font-family: var(--font-accent);
@@ -449,11 +454,15 @@ section {
   font-size: var(--fs-h2);
   font-weight: 400;
   font-style: italic;
-  color: var(--title-font-color);
-  margin-bottom: 2rem;
+  color: var(--title-font-color);  
   line-height: 1.1;
   letter-spacing: var(--ls-tight);
   text-transform: none;
+  margin-bottom: 1rem;
+}
+
+.snake-program-section .section-title {
+  line-height: 0.8;
 }
 
 .title-decoration {
