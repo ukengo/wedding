@@ -740,7 +740,12 @@ background-color: var(--secondary-blue)
   border-radius: .625rem;
   font-size: 1rem;
   transition: all .3s ease;
-  background: var(--white)
+  background: var(--white);
+  color: var(--title-font-color);
+}
+
+.form-group option {
+  color: var(--title-font-color);
 }
 
 .form-group input:focus,
