@@ -214,11 +214,18 @@ body.content-hidden>*:not(#envelope-loader) {
   content: "";
   position: absolute;
   bottom: -.3125rem;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 0;
   height: .125rem;
   background: var(--accent-blue);
   transition: width .3s ease
+}
+
+@media (hover: hover) {
+  .nav-link:hover:after {
+    width: 100%
+  }
 }
 
 .hamburger {
@@ -631,9 +638,11 @@ background-color: var(--secondary-blue)
   box-shadow: 0 4px 15px var(--shadow);
 }
 
-.button-map:hover {
-  transform: translateY(-.125rem);
-  box-shadow: 0 8px 25px var(--shadow);
+@media (hover: hover) {
+  .button-map:hover {
+    transform: translateY(-.125rem);
+    box-shadow: 0 8px 25px var(--shadow);
+  }
 }
 
 .map {
@@ -826,9 +835,11 @@ background-color: var(--secondary-blue)
   gap: .5rem
 }
 
-.submit-btn:hover {
-  transform: translateY(-.125rem);
-  box-shadow: 0 .625rem 1.5625rem #f8b5c166
+@media (hover: hover) {
+  .submit-btn:hover {
+    transform: translateY(-.125rem);
+    box-shadow: 0 .625rem 1.5625rem #f8b5c166
+  }
 }
 
 .footer {
@@ -956,8 +967,10 @@ background-color: var(--secondary-blue)
   transition: transform 0.3s ease;
 }
 
-.qr-code-container:hover {
-  transform: scale(1.05);
+@media (hover: hover) {
+  .qr-code-container:hover {
+    transform: scale(1.05);
+  }
 }
 
 .qr-image {
@@ -982,10 +995,12 @@ background-color: var(--secondary-blue)
   box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
 }
 
-.telegram-btn:hover {
-  background: #0077b5;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 136, 204, 0.4);
+@media (hover: hover) {
+  .telegram-btn:hover {
+    background: #0077b5;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 136, 204, 0.4);
+  }
 }
 
 .telegram-btn i {
@@ -1264,8 +1279,10 @@ background-color: var(--secondary-blue)
   transition: transform 0.3s ease;
 }
 
-.scroll-indicator:hover {
-  transform: translate(-50%, -10px);
+@media (hover: hover) {
+  .scroll-indicator:hover {
+    transform: translate(-50%, -10px);
+  }
 }
 
 /* --- Music Control --- */
@@ -1299,9 +1316,11 @@ background-color: var(--secondary-blue)
   visibility: visible;
 }
 
-.music-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+@media (hover: hover) {
+  .music-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  }
 }
 
 .music-btn i {
@@ -1434,8 +1453,10 @@ background-color: var(--secondary-blue)
   background-color: #ADB0B6;
 }
 
-.color-dot:hover {
-  transform: scale(1.1);
+@media (hover: hover) {
+  .color-dot:hover {
+    transform: scale(1.1);
+  }
 }
 
 
@@ -1545,6 +1566,7 @@ background-color: var(--secondary-blue)
 
   .nav-link {
     letter-spacing: 2px;
+    font-size: 2rem;
   }
 
   .countdown {
