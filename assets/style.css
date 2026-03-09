@@ -757,7 +757,8 @@ background-color: var(--secondary-blue)
 
 .radio-group {
   display: flex;
-  gap: 2rem;
+  justify-content: space-between;
+  gap: 1rem;
   flex-wrap: wrap
 }
 
