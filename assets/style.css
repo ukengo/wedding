@@ -1,11 +1,5 @@
 @charset "UTF-8";
 
-@font-face {
-  font-family: 'Princess Diana';
-  src: url('./Princess-Diana.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
 
 * {
   margin: 0;
@@ -19,8 +13,12 @@ html {
   scroll-padding-top: 4.375rem;
 }
 
+button, input, select, textarea {
+  font-family: inherit;
+}
+
 body {
-  font-family: var(--font-body);
+  font-family: 'Tenor Sans', sans-serif;
   font-weight: 300;
   line-height: 1.8;
   color: var(--text-dark);
@@ -133,10 +131,6 @@ body.content-hidden>*:not(#envelope-loader) {
   --title-font-color: #365877;
 
   /* Typography Scale */
-  --font-hero: 'Tenor Sans', sans-serif;
-  --font-body: 'Montserrat', sans-serif;
-  --font-accent: 'Charm', cursive;
-
   --fs-hero: 4.5rem;
   --fs-h2: 3.2rem;
   --fs-h3: 2rem;
@@ -212,7 +206,6 @@ body.content-hidden>*:not(#envelope-loader) {
   text-decoration: none;
   color: var(--title-font-color);
   font-weight: 500;
-  font-family: var(--font-body);
   font-size: 1.1rem;
   transition: all .3s ease;
   position: relative
@@ -316,7 +309,6 @@ body.content-hidden>*:not(#envelope-loader) {
 }
 
 .hero-title {
-  font-family: var(--font-hero);
   font-size: var(--fs-hero);
   font-weight: 400;
   /* Bodoni Moda looks best at 400 for a luxury feel */
@@ -338,7 +330,6 @@ body.content-hidden>*:not(#envelope-loader) {
 
 
 .hero-title .ampersand {
-  font-family: var(--font-accent);
   font-size: 0.7em;
   font-weight: 400;
   margin: 0 0.5rem;
@@ -378,7 +369,6 @@ body.content-hidden>*:not(#envelope-loader) {
 }
 
 .countdown-title {
-  font-family: 'Bad Script' sans-serif;
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
   font-weight: 500;
@@ -450,7 +440,6 @@ section {
 }
 
 .section-title {
-  font-family: var(--font-hero);
   font-size: var(--fs-h2);
   font-weight: 400;
   font-style: italic;
@@ -462,7 +451,6 @@ section {
 }
 
 .section-header-small {
-  font-family: var(--font-hero);
   font-size: var(--fs-h3);
   font-weight: 400;
   font-style: normal;
@@ -720,7 +708,6 @@ section {
 }
 
 .rsvp-cash-text {
-  font-family: 'Rubik', sans-serif;
   font-size: 1.2rem;
   color: var(--text-dark);
   line-height: 1.6;
@@ -922,7 +909,7 @@ section {
 
 .calendar-month {
   font-size: 1.6rem;
-  color: var(--text-dark)
+  color: var(--title-font-color);
 }
 
 .calendar-grid {
@@ -1192,7 +1179,8 @@ section {
 }
 
 .snake-time {
-  font-family: var(--font-accent);
+
+  /* font-style: italic; */
   font-size: 2rem;
   font-weight: 700;
   color: var(--title-font-color);
@@ -1200,14 +1188,15 @@ section {
 }
 
 .snake-card-title {
-  font-family: var(--font-hero);
+
+  font-style: italic;
   font-size: 1.8rem;
   margin: 5px 0;
   color: var(--title-font-color);
 }
 
 .snake-text {
-  font-family: var(--font-body);
+
   font-size: 1.1rem;
   line-height: 1.4;
   color: var(--title-font-color);
@@ -1350,7 +1339,7 @@ section {
 }
 
 .organizer-title {
-  font-family: var(--font-body);
+
   font-size: 1.5rem;
   color: var(--text-dark);
   margin: 1.5rem 0;
@@ -1402,7 +1391,6 @@ section {
 }
 
 .dress-code-content p {
-  font-family: var(--font-body);
   font-size: 1.2rem;
   color: var(--text-dark);
   margin-bottom: 1.5rem;
@@ -1458,7 +1446,6 @@ section {
 
 
 .hero-invitation {
-  font-family: 'Rubik', sans-serif;
   font-size: 1.6rem;
   font-weight: 400;
   font-style: italic;
