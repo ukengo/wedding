@@ -1,5 +1,37 @@
 @charset "UTF-8";
 
+:root {
+  /* Cinematic Couture Palette */
+  --soft-beige: #D8C6BA;
+  --warm-ivory: #F7F9FB;
+  --dusty-rose: #D8CFC4;
+  --deep-slate: #2C3E50;
+
+  --primary-blue: var(--deep-slate);
+  --secondary-blue: #b3c8e0;
+  --accent-blue: #4680b3;
+  --cream: var(--warm-ivory);
+  --white: #ffffff;
+  --text-dark: #1A1A1A;
+  --text-light: #5F5F5F;
+  --title-font-color: #365877;
+
+  /* Typography Scale */
+  --fs-hero: 4.5rem;
+  --fs-h2: 3.2rem;
+  --fs-h3: 2rem;
+  --fs-body: 1.05rem;
+  --fs-small: 0.75rem;
+
+  --ls-tight: -0.04em;
+  --ls-normal: 0.02em;
+  --ls-wide: 0.15em;
+
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0 10px 40px rgba(0, 0, 0, 0.08);
+  --border-radius-15: 0.4rem;
+  --border-radius-20: 0.6rem;
+}
 
 * {
   margin: 0;
@@ -21,7 +53,7 @@ body {
   font-family: 'Tenor Sans', sans-serif;
   font-weight: 300;
   line-height: 1.8;
-  color: var(--text-dark);
+  color: var(--title-font-color);
   background-color: var(--warm-ivory);
   overflow-x: hidden;
   position: relative;
@@ -112,39 +144,6 @@ body.content-hidden>*:not(#envelope-loader) {
   max-width: 75rem;
   margin: 0 auto;
   padding: 0 1.25rem
-}
-
-:root {
-  /* Cinematic Couture Palette */
-  --soft-beige: #D8C6BA;
-  --warm-ivory: #F7F9FB;
-  --dusty-rose: #D8CFC4;
-  --deep-slate: #2C3E50;
-
-  --primary-blue: var(--deep-slate);
-  --secondary-blue: #b3c8e0;
-  --accent-blue: #4680b3;
-  --cream: var(--warm-ivory);
-  --white: #ffffff;
-  --text-dark: #1A1A1A;
-  --text-light: #5F5F5F;
-  --title-font-color: #365877;
-
-  /* Typography Scale */
-  --fs-hero: 4.5rem;
-  --fs-h2: 3.2rem;
-  --fs-h3: 2rem;
-  --fs-body: 1.05rem;
-  --fs-small: 0.75rem;
-
-  --ls-tight: -0.04em;
-  --ls-normal: 0.02em;
-  --ls-wide: 0.15em;
-
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-  --shadow-hover: 0 10px 40px rgba(0, 0, 0, 0.08);
-  --border-radius-15: 0.4rem;
-  --border-radius-20: 0.6rem;
 }
 
 .date-text {
@@ -373,7 +372,6 @@ body.content-hidden>*:not(#envelope-loader) {
   margin-bottom: 1.5rem;
   font-weight: 500;
   text-align: center;
-  color: var(--text-dark);
 }
 
 .countdown {
@@ -443,7 +441,6 @@ section {
   font-size: var(--fs-h2);
   font-weight: 400;
   font-style: italic;
-  color: var(--title-font-color);  
   line-height: 1.1;
   letter-spacing: var(--ls-tight);
   text-transform: none;
@@ -454,7 +451,6 @@ section {
   font-size: var(--fs-h3);
   font-weight: 400;
   font-style: normal;
-  color: var(--title-font-color);  
   text-align: center;
   line-height: 1.1;
   letter-spacing: var(--ls-tight);
@@ -481,7 +477,7 @@ section {
 }
 
 .decoration-heart {
-  color: var(--accent-blue);
+  /* color: var(--accent-blue); */
   font-size: 1.2rem
 }
 
@@ -537,25 +533,22 @@ section {
 
 .timeline-content h3 {
   font-size: 1.8rem;
-  color: var(--accent-blue);
   margin-bottom: .5rem
 }
 
-.timeline-date {
-  color: var(--gold);
+.timeline-date {  
   font-weight: 600;
   margin-bottom: 1rem
 }
 
-.timeline-content p {
-  color: var(--text-light);
+.timeline-content p {  
   line-height: 1.8
 }
 
 /* Old Program styles removed because they conflict with snake-program.css */
 
 .details {
-  background-color: var(--secondary-blue)
+background-color: var(--secondary-blue)
 }
 
 .details-accent {
@@ -588,13 +581,12 @@ section {
   font-size: 2rem
 }
 
-.detail-card h3 {
+.detail-card h3 { 
   font-size: 1.5rem;
-  color: var(--text-dark);
+  
 }
 
-.detail-card p {
-  color: var(--text-light);
+.detail-card p {  
   margin-bottom: .5rem
 }
 
@@ -623,9 +615,8 @@ section {
 .button-map {
   display: block;
   margin: .5rem auto;
-  background: var(--white);
-  color: var(--accent-blue);
-  border: .125rem solid var(--accent-blue);
+  background: var(--white);  
+  border: .125rem solid var(--title-font-color);
   padding: 1rem 2rem;
   width: fit-content;
   min-width: 250px;
@@ -676,7 +667,6 @@ section {
 
 .rsvp-subtitle {
   font-size: 1.2rem;
-  color: var(--text-light);
   margin: 1rem
 }
 
@@ -702,14 +692,12 @@ section {
   font-weight: 900;
   display: block;
   font-size: 2.5rem;
-  color: var(--accent-blue);
   margin-bottom: 1.2rem;
   opacity: 0.8;
 }
 
 .rsvp-cash-text {
   font-size: 1.2rem;
-  color: var(--text-dark);
   line-height: 1.6;
   font-style: italic;
   font-weight: 400;
@@ -736,7 +724,6 @@ section {
   display: block;
   margin-bottom: .5rem;
   font-weight: 600;
-  color: var(--text-dark)
 }
 
 .form-group input,
@@ -755,7 +742,6 @@ section {
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: var(--accent-blue);
   box-shadow: 0 0 0 .1875rem #f8b5c11a
 }
 
@@ -796,8 +782,8 @@ section {
 }
 
 .radio-label input[type=radio]:checked+.radio-custom {
-  background: var(--accent-blue);
-  border-color: var(--accent-blue)
+  background: var(--title-font-color);
+  border-color: var(--title-font-color);
 }
 
 .radio-label input[type=radio]:checked+.radio-custom:after {
@@ -921,7 +907,7 @@ section {
 .weekday {
   text-align: center;
   font-weight: 700;
-  color: var(--accent-blue);
+  color: var(--title-font-color);
   padding: .5rem 0
 }
 
@@ -932,6 +918,7 @@ section {
   border-radius: .75rem;
   padding: .9rem 0;
   transition: 0.3s;
+  font-size: 1rem;
 }
 
 /* Telegram Section */
@@ -1339,9 +1326,7 @@ section {
 }
 
 .organizer-title {
-
   font-size: 1.5rem;
-  color: var(--text-dark);
   margin: 1.5rem 0;
   font-weight: 500;
 }
@@ -1364,7 +1349,7 @@ section {
 .organizer-phone:active,
 .organizer-phone:focus {
   font-size: 1.3rem;
-  color: var(--text-light) !important;
+  color: var(--title-font-color) !important;
   text-decoration: none;
   transition: color 0.3s ease;
   font-weight: 600;
@@ -1392,7 +1377,6 @@ section {
 
 .dress-code-content p {
   font-size: 1.2rem;
-  color: var(--text-dark);
   margin-bottom: 1.5rem;
   line-height: 1.8;
 }
