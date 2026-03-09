@@ -1358,16 +1358,21 @@ section {
   font-weight: 700;
 }
 
-.organizer-phone {
+.organizer-phone,
+.organizer-phone:visited,
+.organizer-phone:active,
+.organizer-phone:focus {
   font-size: 1.3rem;
-  color: var(--text-light);
+  color: var(--text-light) !important;
   text-decoration: none;
   transition: color 0.3s ease;
   font-weight: 600;
 }
 
-.organizer-phone:hover {
-  color: var(--accent-blue);
+@media (hover: hover) {
+  .organizer-phone:hover {
+    color: var(--accent-blue) !important;
+  }
 }
 
 /* --- Dress Code Section --- */
