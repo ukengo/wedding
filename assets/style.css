@@ -631,6 +631,11 @@ background-color: var(--secondary-blue)
   box-shadow: 0 4px 15px var(--shadow);
 }
 
+.button-map:hover {
+  transform: translateY(-.125rem);
+  box-shadow: 0 8px 25px var(--shadow);
+}
+
 .map {
   border-radius: var(--border-radius-15);
   box-shadow: 0 .3125rem .9375rem var(--shadow);
