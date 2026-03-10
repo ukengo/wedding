@@ -504,7 +504,7 @@ section {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin: 1rem;
+  margin: 1rem 1rem 2rem;
 }
 
 .decoration-line {
@@ -524,7 +524,6 @@ section {
 }
 
 .story-card {
-  background-color: var(--white);
   padding: 3rem 0 5rem;
   border-radius: var(--border-radius-15);
   text-align: center;
