@@ -519,18 +519,29 @@ section {
 }
 
 .story {
-  background: var(--soft-blue)
+  background: var(--secondary-blue);
+  padding: 2rem 0;
+}
+
+.story-card {
+  background-color: var(--white);
+  padding: 3rem 0 5rem;
+  border-radius: var(--border-radius-15);
+  text-align: center;
 }
 
 .story-timeline {
-  max-width: 50rem;
-  margin: 0 auto
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 4rem;
 }
 
 .timeline-item {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 2rem;
   opacity: 0;
   transform: translateY(3.125rem);
   transition: all .8s ease
@@ -547,7 +558,7 @@ section {
 
 .timeline-image {
   flex: 1;
-  margin: 0 2rem
+  margin: 0;
 }
 
 .timeline-image img {
@@ -565,7 +576,7 @@ section {
   background: var(--white);
   border-radius: var(--border-radius-20);
   box-shadow: 0 .625rem 1.875rem var(--shadow);
-  margin: 0 2rem
+  margin: 0
 }
 
 .timeline-content h3 {
@@ -629,7 +640,7 @@ section {
 
 .map-container {
   background: transparent;
-  padding: 2rem;
+  padding: 2rem 0;
   border-radius: var(--border-radius-20);
   box-shadow: 0 .625rem 1.875rem var(--shadow)
 }
@@ -1540,7 +1551,7 @@ section {
     font-size: 1.2rem;
   }
 
-  .dress-code {
+  .story-card {
     padding: 3rem 0 3rem;
   }
 
