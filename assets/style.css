@@ -978,7 +978,7 @@ section {
 .telegram-section {
   background: var(--soft-blue);
   text-align: center;
-  padding: 3rem 0;
+  padding-top: 3rem;
 }
 
 .telegram-content {
