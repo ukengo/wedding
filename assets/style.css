@@ -325,7 +325,7 @@ body.content-hidden>*:not(#envelope-loader) {
   padding: 0 1rem;
   letter-spacing: var(--ls-tight);
   text-shadow: none;
-  line-height: 0.95;
+  line-height: 0.90;
   text-transform: none;
 }
 
@@ -341,10 +341,37 @@ body.content-hidden>*:not(#envelope-loader) {
 .hero-title .ampersand {
   font-size: 0.7em;
   font-weight: 400;
-  margin: 0 0.5rem;
-  color: var(--text-dark);
-  opacity: 0.6;
+  margin: 0 1rem;
+  color: var(--white);
+  opacity: 0.7;
   vertical-align: middle;
+  display: inline-block;
+}
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero-title .name:first-of-type {
+  align-self: flex-start;
+  text-align: left;
+}
+
+.hero-title .name:last-of-type {
+  align-self: flex-end;
+  text-align: right;
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+  }
 }
 
 
@@ -1640,24 +1667,8 @@ section {
     gap: 0;
     padding: 0 1rem;
     white-space: normal;
-    line-height: 1.1;
+    line-height: 0.90;
     font-size: 3.8rem;
-  }
-
-  .hero-title .name:first-of-type {
-    align-self: flex-start;
-    text-align: left;
-  }
-
-  .hero-title .name:last-of-type {
-    align-self: flex-end;
-    text-align: right;
-  }
-
-  .hero-title .ampersand {
-    align-self: center;
-    margin: -1rem 0;
-    opacity: 0.7;
   }
 
   .calendar-card {
