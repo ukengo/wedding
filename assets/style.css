@@ -336,8 +336,6 @@ body.content-hidden>*:not(#envelope-loader) {
   position: relative;
 }
 
-
-
 .hero-title .ampersand {
   font-size: 0.7em;
   font-weight: 400;
@@ -346,13 +344,6 @@ body.content-hidden>*:not(#envelope-loader) {
   opacity: 0.7;
   vertical-align: middle;
   display: inline-block;
-}
-
-.hero-title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
 }
 
 .hero-title .name:first-of-type {
@@ -364,17 +355,6 @@ body.content-hidden>*:not(#envelope-loader) {
   align-self: flex-end;
   text-align: right;
 }
-
-@media (min-width: 768px) {
-  .hero-title {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 0;
-  }
-}
-
-
 
 .hero-subtitle {
   font-size: 1.5rem;
