@@ -400,8 +400,7 @@ body.content-hidden>*:not(#envelope-loader) {
   padding: 2rem;
   margin: 2rem auto;
   border: .0625rem solid rgba(255, 255, 255, .2);
-  max-width: 38rem;
-
+  max-width: 40rem;
 }
 
 .countdown-title {
@@ -734,7 +733,7 @@ section {
   text-align: center;
   position: relative;
   border: 1px solid rgba(145, 175, 203, 0.15);
-  max-width: 34.375rem;
+  max-width: 40rem;
   margin-left: auto;
   margin-right: auto;
   transition: transform 0.3s ease;
@@ -760,7 +759,7 @@ section {
 }
 
 .rsvp-form-container {
-  max-width: 37.5rem;
+  max-width: 40rem;
   margin: 0 auto;
 }
 
