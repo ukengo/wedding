@@ -520,7 +520,7 @@ section {
 
 .story {
   background: var(--secondary-blue);
-  padding: 2rem 0;
+  padding: 1.33rem 0;
 }
 
 .story-card {
@@ -595,7 +595,8 @@ section {
 /* Old Program styles removed because they conflict with snake-program.css */
 
 .details {
-  background-color: var(--secondary-blue)
+  background-color: var(--secondary-blue);
+  padding-top: 2rem;
 }
 
 .details-accent {
@@ -1145,6 +1146,7 @@ section {
   width: 100%;
   overflow: hidden;
   background-color: transparent;
+  padding-top: 4rem;
 }
 
 .snake-program-container {
