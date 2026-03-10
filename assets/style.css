@@ -1385,13 +1385,30 @@ section {
   font-size: 1.3rem;
   color: var(--title-font-color) !important;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.phone-icon {
+  color: var(--accent-blue);
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (hover: hover) {
   .organizer-phone:hover {
     color: var(--accent-blue) !important;
+  }
+
+  .organizer-phone:hover .phone-icon {
+    transform: rotate(15deg) scale(1.1);
+    color: var(--title-font-color);
   }
 }
 
