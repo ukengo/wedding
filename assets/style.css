@@ -45,7 +45,10 @@ html {
   scroll-padding-top: 4.375rem;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font-family: inherit;
 }
 
@@ -543,19 +546,19 @@ section {
   margin-bottom: .5rem
 }
 
-.timeline-date {  
+.timeline-date {
   font-weight: 600;
   margin-bottom: 1rem
 }
 
-.timeline-content p {  
+.timeline-content p {
   line-height: 1.8
 }
 
 /* Old Program styles removed because they conflict with snake-program.css */
 
 .details {
-background-color: var(--secondary-blue)
+  background-color: var(--secondary-blue)
 }
 
 .details-accent {
@@ -588,12 +591,12 @@ background-color: var(--secondary-blue)
   font-size: 2rem
 }
 
-.detail-card h3 { 
+.detail-card h3 {
   font-size: 1.5rem;
-  
+
 }
 
-.detail-card p {  
+.detail-card p {
   margin-bottom: .5rem
 }
 
@@ -622,7 +625,7 @@ background-color: var(--secondary-blue)
 .button-map {
   display: block;
   margin: .5rem auto;
-  background: var(--white);  
+  background: var(--white);
   border: .125rem solid var(--title-font-color);
   padding: 1rem 2rem;
   width: fit-content;
@@ -713,7 +716,7 @@ background-color: var(--secondary-blue)
 .rsvp-cash-text {
   font-size: 1.2rem;
   line-height: 1.6;
-  font-style: italic;
+  /* font-style: italic; */
   font-weight: 400;
   display: block;
 }
@@ -859,7 +862,8 @@ background-color: var(--secondary-blue)
 .footer-text h3 {
   font-size: clamp(1.8rem, 6vw, 2.5rem);
   color: var(--primary-blue);
-  margin-bottom: .5rem
+  margin-bottom: .5rem;
+  line-height: 1.2;
 }
 
 .footer-decoration {
