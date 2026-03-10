@@ -504,7 +504,7 @@ section {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem;
 }
 
 .decoration-line {
@@ -1036,8 +1036,9 @@ section {
 
 .telegram-btn i {
   font-size: 1.3rem;
+  transform: scale(2);
+  margin-right: 0.8rem;
 }
-
 .day span {
   position: relative;
   z-index: 1
