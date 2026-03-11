@@ -17,7 +17,7 @@
   --title-font-color: #365877;
 
   /* Typography Scale */
-  --fs-hero: 4.5rem;
+  --fs-hero: clamp(3rem, 10vw, 6rem);
   --fs-h2: 3.2rem;
   --fs-h3: 2rem;
   --fs-body: 1.05rem;
