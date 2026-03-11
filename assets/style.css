@@ -146,7 +146,7 @@ body.content-hidden>*:not(#envelope-loader) {
 .container {
   max-width: 75rem;
   margin: 0 auto;
-  padding: 0 1.25rem
+  padding: 0 0.25rem;
 }
 
 .date-text {
@@ -354,6 +354,7 @@ body.content-hidden>*:not(#envelope-loader) {
 .hero-title .name:last-of-type {
   align-self: flex-end;
   text-align: right;
+  padding-top: 10px;
 }
 
 .hero-subtitle {
@@ -1029,6 +1030,7 @@ section {
   transform: scale(2);
   margin-right: 0.8rem;
 }
+
 .day span {
   position: relative;
   z-index: 1
@@ -1616,6 +1618,10 @@ section {
   .countdown-item {
     min-width: 3.75rem;
     padding: 0.8rem;
+  }
+
+  .story-timeline {
+    padding: 0 10px;
   }
 
   .timeline-item {
