@@ -1740,7 +1740,7 @@ section {
   }
 
   .map-container {
-    padding: 1rem;
+    padding: 1rem 0;
     margin: 1.5rem auto;
   }
 
