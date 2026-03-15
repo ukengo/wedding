@@ -928,13 +928,15 @@ section {
   background: var(--white);
   border-radius: var(--border-radius-20);
   box-shadow: 0 .9375rem 2.5rem var(--shadow);
-  padding: 1.5rem 1.5rem 2rem
+  padding: clamp(0.5rem, 2vmin, 1.5rem) clamp(0.5rem, 2vmin, 1.5rem) clamp(0.8rem, 2.5vmin, 2rem)
 }
 
 .hero-calendar-card {
   margin: 0;
   width: 100%;
   max-width: none;
+  max-height: calc(100dvh - 12rem);
+  overflow-y: auto;
 }
 
 .calendar-top {
@@ -971,6 +973,7 @@ section {
   transition: 0.3s;
   font-size: 1rem;
 }
+
 
 /* Telegram Section */
 .telegram-section {
@@ -1774,4 +1777,37 @@ section {
   html {
     scroll-behavior: smooth;
   }
+}
+
+@media (max-height: 750px) {
+/*   .hero {
+    padding-top: 0rem !important;
+  } */
+
+  .hero-title {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hero-title .name:last-of-type {
+    padding-top: 0;
+  }
+
+  .hero-title .ampersand {
+    margin: 0;
+    font-size: 0.5em;
+  }
+
+  .hero-invitation {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+    padding: 0 1rem;
+  }
+
+/*   .hero-invitation br {
+    display: none !important;
+  } */
 }
