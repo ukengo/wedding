@@ -5,7 +5,8 @@
   --soft-beige: #D8C6BA;
   --warm-ivory: #F7F9FB;
   --dusty-rose: #D8CFC4;
-  --deep-slate: #2C3E50;
+  /* --deep-slate: #2C3E50; */
+  --deep-slate: #3f5872;
 
   --primary-blue: var(--deep-slate);
   --secondary-blue: #b3c8e0;
@@ -276,7 +277,7 @@ body.content-hidden>*:not(#envelope-loader) {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -2
+  z-index: -2;
 }
 
 .hero-video video {
