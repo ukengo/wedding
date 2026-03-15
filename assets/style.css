@@ -1477,31 +1477,31 @@ section {
 }
 
 .bg-primary-pink {
-  background-color: #5b7eab;
+  background-color: #7C95B4;
 }
 
 .bg-secondary-pink {
-  background-color: #587eac;
+  background-color: #B9C6D1;
 }
 
 .bg-accent-pink {
-  background-color: #9eb3ca;
+  background-color: #DEEAF6;
 }
 
 .bg-primary-blue {
-  background-color: #c6dcee;
+  background-color: #CBC9CA;
 }
 
 .bg-secondary-blue {
-  background-color: #d8cfc4;
+  background-color: #DED5CC;
 }
 
 .bg-accent-blue {
-  background-color: #d8c6bb;
+  background-color: #F2E5DE;
 }
 
 .bg-accent-grey {
-  background-color: #afb0b6;
+  background-color: #F5EBE3;
 }
 
 @media (hover: hover) {
