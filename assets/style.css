@@ -505,7 +505,7 @@ section {
 }
 
 .story-card {
-  padding: 3rem 0 5rem;
+  padding: 3rem 0 0;
   border-radius: var(--border-radius-15);
   text-align: center;
 }
@@ -1532,10 +1532,6 @@ section {
     bottom: 20px;
     right: 20px;
     font-size: 1.2rem;
-  }
-
-  .story-card {
-    padding: 3rem 0 3rem;
   }
 
   .story-timeline {
