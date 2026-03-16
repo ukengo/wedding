@@ -642,12 +642,11 @@ section {
 
 .map-container {
   background: transparent;
-  padding: 2rem 0;
   border-radius: var(--border-radius-20);
-  box-shadow: 0 .625rem 1.875rem var(--shadow)
+  box-shadow: 0 .625rem 1.875rem var(--shadow);
+  padding: 1rem 0 0;
+  margin: 1.5rem auto 0;
 }
-
-
 
 .location {
   position: relative
@@ -660,11 +659,12 @@ section {
   object-fit: cover;
   box-shadow: 0 .3125rem .9375rem var(--shadow);
   margin-top: 2rem;
+  display: block;
 }
 
 .button-map {
   display: block;
-  margin: .5rem auto;
+  margin: 0 auto .5rem;
   background: var(--white);
   border: .125rem solid var(--title-font-color);
   padding: 1rem 2rem;
@@ -1686,6 +1686,10 @@ section {
     height: 18.75rem;
   }
 
+  .dress-code {
+    padding: 2rem 0;
+  }
+
   .rsvp-form {
     padding: 2rem 1.5rem;
   }
@@ -1776,11 +1780,6 @@ section {
 
   .countdown-container {
     padding: 1.5rem 1rem;
-    margin: 1.5rem auto;
-  }
-
-  .map-container {
-    padding: 1rem 0;
     margin: 1.5rem auto;
   }
 
