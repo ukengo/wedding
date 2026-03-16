@@ -390,10 +390,27 @@ body.content-hidden>*:not(#envelope-loader) {
 }
 
 .countdown-title {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-  font-weight: 500;
+  font-size: clamp(1rem, 6vw, 2.2rem);
+  margin-bottom: 2rem;
+  font-weight: 400;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.cursive-text {
+  font-family: 'Bad Script', cursive;
+  font-size: clamp(1.2rem, 7vw, 2.5rem);
+  font-weight: 800;
+  text-transform: none;
+  margin-left: 0.5rem;
+  display: inline-block;
+  line-height: inherit;
+  animation: heartBeatSubtle 1.5s infinite;
 }
 
 .countdown {
@@ -910,6 +927,23 @@ section {
 
   100% {
     transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes heartBeatSubtle {
+  0% {
+    transform: translateY(8px) scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(8px) scale(1.15);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(8px) scale(1);
     opacity: 1;
   }
 }
@@ -1780,7 +1814,7 @@ section {
 }
 
 @media (max-height: 750px) {
-/*   .hero {
+  /*   .hero {
     padding-top: 0rem !important;
   } */
 
@@ -1807,7 +1841,7 @@ section {
     padding: 0 1rem;
   }
 
-/*   .hero-invitation br {
+  /*   .hero-invitation br {
     display: none !important;
   } */
 }
