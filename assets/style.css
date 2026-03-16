@@ -241,7 +241,7 @@ body.content-hidden>*:not(#envelope-loader) {
 .bar {
   width: 1.8rem;
   height: 2px;
-  background: var(--text-dark);
+  background: var(--accent-blue);
   margin: 3px 0;
   transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
   border-radius: 2px;
