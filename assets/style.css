@@ -664,7 +664,7 @@ section {
 
 .button-map {
   display: block;
-  margin: 0 auto .5rem;
+  margin: .5rem auto;
   background: var(--white);
   border: .125rem solid var(--title-font-color);
   padding: 1rem 2rem;
