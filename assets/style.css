@@ -440,7 +440,7 @@ body.content-hidden>*:not(#envelope-loader) {
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--white);
-  text-shadow: .125rem .125rem .25rem rgba(0, 0, 0, .3)
+  text-shadow: .125rem .125rem .25rem rgba(64, 91, 119, .3)
 }
 
 .countdown-label {
