@@ -1097,7 +1097,7 @@ section {
 }
 
 .day.is-wedding span {
-  color: #6372fd
+  color: var(--accent-blue);
 }
 
 
