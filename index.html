@@ -30,7 +30,7 @@
 
 <body class="content-hidden1">
   <!-- Envelope Loader -->
-<!--      <div id="envelope-loader">
+  <!--<div id="envelope-loader">
     <div class="envelope-wrapper">
       <div class="video-crop-container">
         <video id="envelope-video" playsinline preload="auto">
@@ -39,7 +39,7 @@
       </div>
       <div class="click-hint">Натисніть на конверт, щоб відкрити</div>
     </div>
-  </div> -->
+  </div>-->
 
   <!-- Navigation -->
   <nav class="navbar">
@@ -192,7 +192,12 @@
   <!-- Wedding Program Section -->
   <section class="snake-program-section" id="program">
     <div class="program-video">
-      <video autoplay muted loop playsinline>
+      <video id="snake-program-video-1" autoplay muted playsinline class="snake-video active">
+        <source src="./assets/snake-program-video.webm" type="video/webm">
+        <source src="./assets/snake-program-video.mp4" type="video/mp4">
+      </video>
+      <video id="snake-program-video-2" muted playsinline class="snake-video">
+        <source src="./assets/snake-program-video.webm" type="video/webm">
         <source src="./assets/snake-program-video.mp4" type="video/mp4">
       </video>
     </div>

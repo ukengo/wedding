@@ -1169,7 +1169,7 @@ section {
 .snake-program-section {
   position: relative;
   width: 100%;
-  overflow: hidden;
+  clip-path: inset(0); /* Дозволяє фіксованому відео бути видимим лише в межах секції */
   background-color: transparent;
   padding-top: 4rem;
 }
@@ -1195,13 +1195,24 @@ section {
   width: 100%;
   height: 100%;
   z-index: -2;
+  /* overflow: hidden; */
 }
 
-.program-video video {
+.program-video .snake-video {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: left center;
+  object-position: top center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.program-video .snake-video.active {
+  opacity: 1;
 }
 
 .program-overlay {

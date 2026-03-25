@@ -603,11 +603,61 @@ document.addEventListener('DOMContentLoaded', () => {
         // Handle window resize
         window.addEventListener('resize', updatePomegranatePosition);
     }
-    // 3. Set Program Video Speed
-    const programVideo = document.querySelector('.program-video video');
-    if (programVideo) {
-        programVideo.playbackRate = 0.3;
+    // 3. Seamless Program Video Loop
+    function initSeamlessLoop() {
+        const video1 = document.getElementById('snake-program-video-1');
+        const video2 = document.getElementById('snake-program-video-2');
+        if (!video1 || !video2) return;
+
+        let activeVideo = video1;
+        let idleVideo = video2;
+        const fadeDuration = 1; // seconds before end to start fade
+        const playbackRate = 0.3;
+
+        // Apply playback speed
+        [video1, video2].forEach(v => {
+            v.playbackRate = playbackRate;
+            v.addEventListener('play', () => { v.playbackRate = playbackRate; });
+        });
+
+        function performCrossfade() {
+            // Pre-load/play the idle video slightly before swapping
+            idleVideo.currentTime = 0;
+            const playPromise = idleVideo.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    activeVideo.classList.remove('active');
+                    idleVideo.classList.add('active');
+
+                    // Swap roles
+                    const temp = activeVideo;
+                    activeVideo = idleVideo;
+                    idleVideo = temp;
+                }).catch(error => {
+                    console.log("Idle video playback failed:", error);
+                });
+            }
+        }
+
+        function checkFade() {
+            const currentTime = activeVideo.currentTime;
+            const duration = activeVideo.duration;
+
+            // Trigger crossfade 1 second before completion (adjusting for playbackRate)
+            // If the video is playing at 0.3 speed, 1 second of "video time" takes 3.33 seconds real time.
+            const threshold = duration - fadeDuration;
+
+            if (duration > 0 && currentTime >= threshold && idleVideo.paused) {
+                performCrossfade();
+            }
+            requestAnimationFrame(checkFade);
+        }
+
+        requestAnimationFrame(checkFade);
     }
+
+    initSeamlessLoop();
 });
 
 /* --- Envelope Loader Logic --- */
