@@ -189,10 +189,7 @@ class RSVPForm {
 
         // Add conditional logic for "Children" field based on attendance
         this.attendanceRadios = this.form.querySelectorAll('input[name="attendance"]');
-        this.childrenSelect = document.getElementById('children');
-        this.childrenLabel = document.getElementById('children-label');
-
-        if (this.attendanceRadios.length && this.childrenSelect && this.childrenLabel) {
+        if (this.attendanceRadios.length) {
             this.attendanceRadios.forEach(radio => {
                 radio.addEventListener('change', () => this.handleAttendanceChange());
             });
@@ -202,15 +199,7 @@ class RSVPForm {
     }
 
     handleAttendanceChange() {
-        const selectedAttendance = this.form.querySelector('input[name="attendance"]:checked');
-        if (selectedAttendance && selectedAttendance.value === 'yes') {
-            this.childrenSelect.setAttribute('required', 'required');
-            this.childrenLabel.innerHTML = 'Кількість дітей до 18 років *';
-        } else {
-            this.childrenSelect.removeAttribute('required');
-            this.childrenLabel.innerHTML = 'Кількість дітей до 18 років';
-            this.clearError(this.childrenSelect);
-        }
+        // No conditional field logic needed (children field removed)
     }
 
     validateField(field) {
