@@ -649,68 +649,135 @@ document.addEventListener('DOMContentLoaded', () => {
     initSeamlessLoop();
 });
 
-/* --- Envelope Loader Logic --- */
+/* --- Premium Intro & 3D Envelope Animation --- */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const envelopeLoader = document.getElementById('envelope-loader');
-    const envelopeVideo = document.getElementById('envelope-video');
-    const envelopeWrapper = document.querySelector('.envelope-wrapper');
+    const premiumIntro = document.getElementById('premium-intro');
+    const envelope = document.getElementById('envelope-main');
+    const flap = document.getElementById('envelope-flap-top');
+    const letter = document.getElementById('envelope-letter');
+    const seal = document.getElementById('envelope-seal');
+    const introBg = document.getElementById('intro-bg');
     const body = document.body;
 
-    // Helper to finish loading manually
-    function finishLoading() {
-        if (!envelopeLoader) return;
+    if (!premiumIntro || !envelope) return;
 
-        // Показуємо контент негайно, щоб не було білого екрану під час fade-out
-        body.classList.remove('content-hidden');
-        envelopeLoader.classList.add('fade-out');
+    // --- 1. Initial Intro Entrance ---
+    gsap.to(envelope, { 
+        opacity: 1, 
+        y: 0, 
+        scale: 1, 
+        duration: 1.5, 
+        ease: "back.out(1.7)",
+        delay: 0.5 
+    });
 
-        setTimeout(() => {
-            envelopeLoader.style.display = 'none';
-            window.scrollTo(0, 0);
+    // --- 2. Envelope Interaction ---
+    let isOpening = false;
+    envelope.addEventListener('click', () => {
+        if (isOpening) return;
+        isOpening = true;
 
-            // Re-trigger fade-in animations manually if needed
-            if (typeof handleScrollFade === 'function') handleScrollFade();
-
-            console.log("Welcome! Envelope sequence finished.");
-        }, 1000); // Час fade-out
-    }
-
-    if (envelopeLoader && envelopeVideo && envelopeWrapper) {
-        envelopeWrapper.addEventListener('click', () => {
-            // Запускаємо відео
-            envelopeVideo.play().catch(error => {
-                console.error("Playback failed:", error);
-                // На випадок помилки автозапуску/блокування просто приховаємо лоадер
-                finishLoading();
-            });
-
-            // Start Background Music
-            const bgMusic = document.getElementById('bg-music');
-            if (bgMusic) {
-                bgMusic.volume = 0.4; // Set volume to 40%
-                bgMusic.play().then(() => {
-                    const musicToggle = document.getElementById('music-toggle');
-                    if (musicToggle) musicToggle.classList.add('visible', 'playing');
-                }).catch(e => {
-                    console.log("Audio autoplay blocked, will wait for interaction.", e);
-                    // Show toggle even if play failed so user can start it
-                    const musicToggle = document.getElementById('music-toggle');
-                    if (musicToggle) musicToggle.classList.add('visible');
-                });
+        const tl = gsap.timeline({
+            onComplete: () => {
+                premiumIntro.style.display = 'none';
+                window.scrollTo(0, 0);
+                if (typeof handleScrollFade === 'function') handleScrollFade();
             }
-
-            // Приховуємо натяк
-            const hint = document.querySelector('.click-hint');
-            if (hint) hint.style.opacity = '0';
         });
 
-        // Чекаємо завершення відео
-        envelopeVideo.onended = () => {
-            finishLoading();
-        };
-    }
+        // Step 1: Break seal and open flap
+        tl.to(seal, { opacity: 0, duration: 0.3 })
+          .to(flap, { 
+              rotateX: 180, 
+              duration: 1, 
+              ease: "power2.inOut",
+              z: 2 // Ensure it stays on top during rotation
+          })
+          
+          // Step 2: Letter rises from envelope
+          .to(letter, { 
+              y: "-110%", 
+              duration: 1.2, 
+              ease: "power2.out",
+              zIndex: 10 // Bring to front
+          }, "-=0.3")
+
+          // Step 3: Mega Zoom into the letter / site
+          .to(letter, {
+              scale: 8,
+              opacity: 0,
+              duration: 2,
+              ease: "expo.in"
+          }, "+=0.2")
+          .to(introBg, {
+              scale: 3,
+              filter: "blur(0px) brightness(1.2)",
+              duration: 2.5,
+              ease: "expo.inOut"
+          }, "-=2")
+          .to(premiumIntro, {
+              opacity: 0,
+              duration: 1.5,
+              ease: "power2.inOut"
+          }, "-=1.5")
+
+          // Step 4: Show site content
+          .call(() => {
+              body.classList.remove('content-hidden');
+              initHeroAnimations();
+          }, null, "-=1.5");
+
+        // Start Background Music
+        const bgMusic = document.getElementById('bg-music');
+        if (bgMusic) {
+            bgMusic.volume = 0.4;
+            bgMusic.play().then(() => {
+                const musicToggle = document.getElementById('music-toggle');
+                if (musicToggle) musicToggle.classList.add('visible', 'playing');
+            }).catch(e => {
+                console.log("Audio autoplay blocked.", e);
+                const musicToggle = document.getElementById('music-toggle');
+                if (musicToggle) musicToggle.classList.add('visible');
+            });
+        }
+
+        // Hide hint
+        gsap.to(".click-hint", { opacity: 0, duration: 0.5 });
+    });
 });
+
+// --- 3. Hero Section Entrance Animations ---
+function initHeroAnimations() {
+    const tlHero = gsap.timeline({ defaults: { ease: "power4.out" } });
+
+    tlHero
+        .from(".navbar", { y: -100, opacity: 0, duration: 1.2 })
+        .from(".hero-title .name", { 
+            y: 100, 
+            opacity: 0, 
+            rotateX: -45, 
+            stagger: 0.2, 
+            duration: 1.5 
+        }, "-=0.8")
+        .from(".hero-title .ampersand", { 
+            scale: 0, 
+            opacity: 0, 
+            duration: 1 
+        }, "-=1.2")
+        .from(".hero-invitation", { 
+            y: 30, 
+            opacity: 0, 
+            duration: 1 
+        }, "-=1")
+        .from(".hero-calendar-card", { 
+            y: 50, 
+            opacity: 0, 
+            scale: 0.95, 
+            duration: 1.2 
+        }, "-=0.8");
+}
+
 
 /* --- Scroll Indicator Interactivity --- */
 document.addEventListener('DOMContentLoaded', () => {
