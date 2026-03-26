@@ -68,68 +68,253 @@ body.content-hidden {
   overflow: hidden;
 }
 
-body.content-hidden>*:not(#envelope-loader) {
-  display: none;
+/* Premium Intro & Preloader */
+body.content-hidden {
+  overflow: hidden;
 }
 
-#envelope-loader {
+body.content-hidden > *:not(#premium-intro) {
+  display: none !important;
+}
+
+.premium-intro {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, var(--accent-blue) 0%, var(--primary-blue) 50%, var(--secondary-blue) 100%);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
-  transition: opacity 1s ease, visibility 1s ease;
+  z-index: 99999;
+  overflow: hidden;
+  background: var(--warm-ivory);
 }
 
-#envelope-loader.fade-out {
-  opacity: 0;
-  visibility: hidden;
+.intro-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('hero-background.webp') center/cover no-repeat;
+  filter: blur(10px) brightness(0.7);
+  transform: scale(1.1);
+  transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), filter 1.5s ease;
+  z-index: -1;
+}
+
+.intro-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+}
+
+/* Premium Intro & 3D Envelope */
+body.content-hidden {
+  overflow: hidden;
+}
+
+body.content-hidden > *:not(#premium-intro) {
+  display: none !important;
+}
+
+.premium-intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  overflow: hidden;
+  background: var(--warm-ivory);
+}
+
+.intro-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('hero-background.webp') center/cover no-repeat;
+  filter: blur(15px) brightness(0.6);
+  transform: scale(1.1);
+  z-index: -1;
 }
 
 .envelope-wrapper {
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  max-width: 600px;
-  padding: 20px;
-}
-
-.video-crop-container {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  /* Adjust this to match the desired visible area */
-  overflow: hidden;
-  border-radius: var(--border-radius-15);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  perspective: 1500px;
+  width: 90%;
+  max-width: 550px;
+  aspect-ratio: 16 / 10;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: transparent;
-  /* Перекривається градієнтом лоадера */
 }
 
-#envelope-video {
+.envelope {
+  position: relative;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transform: scale(1.4);
-  /* Adjust scale to "zoom in" */
-  transition: transform 0.5s ease;
+  background: #f0ede9; /* Back paper color */
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  transform-style: preserve-3d;
+  cursor: pointer;
 }
 
-.envelope-wrapper #envelope-video {
-  transform: scale(1.4);
+/* Common Flap Style */
+[class^="envelope-flap-"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+
+.envelope-paper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #e6e0d8;
+  z-index: 1;
+}
+
+.envelope-flap-bottom {
+  background: #e6e0d8; /* Slightly darker */
+  clip-path: polygon(0% 100%, 50% 50%, 100% 100%);
+  z-index: 4;
+}
+
+.envelope-flap-left {
+  background: #ece7e0;
+  clip-path: polygon(0% 0%, 50% 50%, 0% 100%);
+  z-index: 4;
+}
+
+.envelope-flap-right {
+  background: #ece7e0;
+  clip-path: polygon(100% 0%, 50% 50%, 100% 100%);
+  z-index: 4;
+}
+
+.envelope-flap-top {
+  background: #f0ede9;
+  clip-path: polygon(0% 0%, 50% 50%, 100% 0%);
+  z-index: 5;
+  transform-origin: top;
+  transition: transform 0.8s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.envelope-seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%); /* Adjust to sit at the tip of top flap */
+  width: 50px;
+  height: 50px;
+  background: #c84b4b; /* Wax seal color */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 10;
+  transition: opacity 0.3s ease;
+}
+
+.envelope-letter {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  background: white;
+  z-index: 2;
+  padding: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transform: translateY(0);
+}
+
+.letter-inner {
+  text-align: center;
+  color: var(--primary-blue);
+}
+
+.intro-names {
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  font-family: 'Tenor Sans', sans-serif;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+}
+
+.intro-name {
+  display: block;
+}
+
+.intro-amp {
+  font-size: 0.7em;
+  opacity: 0.5;
+  font-style: italic;
+}
+
+.intro-date {
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  opacity: 0.7;
 }
 
 .click-hint {
-  margin-top: 20px;
-  font-size: 1.5rem;
-  color: var(--accent-blue);
+  position: absolute;
+  bottom: -60px;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--primary-blue);
+  animation: bounceHint 2s infinite;
+}
+
+@keyframes bounceHint {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Hide navigation and other elements initially to prevent flicker */
+.navbar, .hero, .story, .snake-program-section, .details, .rsvp, .telegram-section, .organizer, .footer {
+  visibility: hidden;
+}
+
+body:not(.content-hidden) .navbar,
+body:not(.content-hidden) .hero,
+body:not(.content-hidden) .story,
+body:not(.content-hidden) .snake-program-section,
+body:not(.content-hidden) .details,
+body:not(.content-hidden) .rsvp,
+body:not(.content-hidden) .telegram-section,
+body:not(.content-hidden) .organizer,
+body:not(.content-hidden) .footer {
+  visibility: visible;
+}
+
+/* GSAP Start states */
+.envelope {
+  opacity: 0;
+  transform: translateY(50px) scale(0.9);
 }
 
 @keyframes blink {
