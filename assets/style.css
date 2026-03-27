@@ -162,9 +162,9 @@ body.content-hidden>*:not(#premium-intro) {
   position: relative;
   width: 100%;
   height: 100%;
-  background: #f0ede9;
+  background: linear-gradient(135deg, #e6f0fa, #d1e5f7);
   /* Back paper color */
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
   transform-style: preserve-3d;
   cursor: pointer;
 }
@@ -177,41 +177,41 @@ body.content-hidden>*:not(#premium-intro) {
   top: 0;
   left: 0;
   z-index: 3;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
 }
 
 .envelope-paper {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #e6e0d8;
+  background: linear-gradient(135deg, #f0f7ff, #e1eef9);
   z-index: 1;
 }
 
 .envelope-flap-bottom {
-  background: #e6e0d8;
+  background: linear-gradient(135deg, #f3f9ff, #e6f2fd);
   /* Slightly darker */
   clip-path: polygon(0% 100%, 50% 50%, 100% 100%);
   z-index: 4;
 }
 
 .envelope-flap-left {
-  background: #ece7e0;
+  background: linear-gradient(135deg, #f0f7ff, #e0effc);
   clip-path: polygon(0% 0%, 50% 50%, 0% 100%);
   z-index: 4;
 }
 
 .envelope-flap-right {
-  background: #ece7e0;
+  background: linear-gradient(135deg, #f0f7ff, #e0effc);
   clip-path: polygon(100% 0%, 50% 50%, 100% 100%);
   z-index: 4;
 }
 
 .envelope-flap-top {
-  background: #f0ede9;
+  background: linear-gradient(135deg, #e1effc, #caddf0);
   clip-path: polygon(0% 0%, 50% 50%, 100% 0%);
   z-index: 5;
   transform-origin: top;
-  transition: transform 0.8s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -225,7 +225,7 @@ body.content-hidden>*:not(#premium-intro) {
   /* Adjust to sit at the tip of top flap */
   width: 50px;
   height: 50px;
-  background: #c84b4b;
+  background: var(--accent-blue);
   /* Wax seal color */
   border-radius: 50%;
   display: flex;
@@ -333,7 +333,8 @@ body:not(.content-hidden) .footer {
 /* GSAP Start states */
 .envelope {
   opacity: 0;
-  transform: translateY(50px) scale(0.9);
+  transform: translateY(80px) scale(0.9) rotateX(15deg);
+  filter: blur(10px);
 }
 
 @keyframes blink {
