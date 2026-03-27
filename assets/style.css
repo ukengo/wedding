@@ -73,7 +73,7 @@ body.content-hidden {
   overflow: hidden;
 }
 
-body.content-hidden > *:not(#premium-intro) {
+body.content-hidden>*:not(#premium-intro) {
   display: none !important;
 }
 
@@ -117,7 +117,7 @@ body.content-hidden {
   overflow: hidden;
 }
 
-body.content-hidden > *:not(#premium-intro) {
+body.content-hidden>*:not(#premium-intro) {
   display: none !important;
 }
 
@@ -162,8 +162,9 @@ body.content-hidden > *:not(#premium-intro) {
   position: relative;
   width: 100%;
   height: 100%;
-  background: #f0ede9; /* Back paper color */
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  background: #f0ede9;
+  /* Back paper color */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   transform-style: preserve-3d;
   cursor: pointer;
 }
@@ -187,7 +188,8 @@ body.content-hidden > *:not(#premium-intro) {
 }
 
 .envelope-flap-bottom {
-  background: #e6e0d8; /* Slightly darker */
+  background: #e6e0d8;
+  /* Slightly darker */
   clip-path: polygon(0% 100%, 50% 50%, 100% 100%);
   z-index: 4;
 }
@@ -219,17 +221,19 @@ body.content-hidden > *:not(#premium-intro) {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -100%); /* Adjust to sit at the tip of top flap */
+  transform: translate(-50%, -100%);
+  /* Adjust to sit at the tip of top flap */
   width: 50px;
   height: 50px;
-  background: #c84b4b; /* Wax seal color */
+  background: #c84b4b;
+  /* Wax seal color */
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   font-size: 1.2rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   z-index: 10;
   transition: opacity 0.3s ease;
 }
@@ -247,7 +251,7 @@ body.content-hidden > *:not(#premium-intro) {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transform: translateY(0);
 }
 
@@ -290,12 +294,27 @@ body.content-hidden > *:not(#premium-intro) {
 }
 
 @keyframes bounceHint {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 /* Hide navigation and other elements initially to prevent flicker */
-.navbar, .hero, .story, .snake-program-section, .details, .rsvp, .telegram-section, .organizer, .footer {
+.navbar,
+.hero,
+.story,
+.snake-program-section,
+.details,
+.rsvp,
+.telegram-section,
+.organizer,
+.footer {
   visibility: hidden;
 }
 
@@ -480,14 +499,7 @@ body:not(.content-hidden) .footer {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #4680B3;
-background: #4680B3;
-background: #4680B3;
-background: #4680B3;
-background: #4680B3;
-background: #4680B3;
-background: #4680B3;
-background: linear-gradient(90deg, rgba(70, 128, 179, 1) 0%, rgba(179, 200, 224, 1) 50%, rgba(70, 128, 179, 1) 100%);
+  background: linear-gradient(90deg, rgba(70, 128, 179, 1) 0%, rgba(179, 200, 224, 1) 50%, rgba(70, 128, 179, 1) 100%);
   /* background: linear-gradient(90deg, var(--accent-blue) 0%, var(--primary-blue) 50%, var(--secondary-blue) 100%); */
   opacity: 0.8;
   z-index: -1
@@ -1103,7 +1115,7 @@ section {
 }
 
 .footer-decoration {
-/*   color: var(--accent-blue); */
+  /*   color: var(--accent-blue); */
   color: #F5EBE3;
   font-size: 1.5rem;
   animation: heartBeat 1.5s infinite;
@@ -1364,7 +1376,8 @@ section {
 .snake-program-section {
   position: relative;
   width: 100%;
-  clip-path: inset(0); /* Дозволяє фіксованому відео бути видимим лише в межах секції */
+  clip-path: inset(0);
+  /* Дозволяє фіксованому відео бути видимим лише в межах секції */
   background-color: transparent;
   padding-top: 4rem;
 }
@@ -1773,11 +1786,7 @@ section {
 }
 
 
-@media (max-width: 960px) {
-  .snake-svg-element {
-    opacity: 0.5;
-  }
-}
+
 
 @media (max-width: 768px) {
   .music-btn {
@@ -2023,7 +2032,7 @@ section {
   }
 }
 
-@media (max-height: 750px) {
+@media (max-height: 1100px) and (min-width: 600px) {
   /*   .hero {
     padding-top: 0rem !important;
   } */
@@ -2033,6 +2042,13 @@ section {
     font-size: 3rem;
     flex-direction: column;
     gap: 0;
+  }
+
+  /* Raising the background video to better align action on short viewports */
+  .program-video .snake-video {
+    top: -200px;
+    height: calc(100% + 200px);
+    object-position: center top;
   }
 
   .hero-title .name:last-of-type {
@@ -2054,4 +2070,17 @@ section {
   /*   .hero-invitation br {
     display: none !important;
   } */
+}
+
+@media (max-width: 960px) and (min-width: 600px) {
+  .snake-svg-element {
+    opacity: 0.5;
+  }
+
+  /* Refined video offset for medium screens (priority) */
+  .program-video .snake-video {
+    top: -200px;
+    height: calc(100% + 200px);
+    object-position: center top;
+  }
 }

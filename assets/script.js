@@ -609,9 +609,24 @@ document.addEventListener('DOMContentLoaded', () => {
             v.addEventListener('play', () => { v.playbackRate = playbackRate; });
         });
 
+        // Set initial start time to 6 seconds for the active video (safely)
+        const startOffset = 6;
+        const setInitialTime = () => {
+            if (video1.duration > startOffset) {
+                video1.currentTime = startOffset;
+            }
+            video1.play().catch(e => console.log("Initial video play failed:", e));
+        };
+
+        if (video1.readyState >= 1) { // HAVE_METADATA
+            setInitialTime();
+        } else {
+            video1.addEventListener('loadedmetadata', setInitialTime, { once: true });
+        }
+
         function performCrossfade() {
-            // Pre-load/play the idle video slightly before swapping
-            idleVideo.currentTime = 0;
+            // Pre-load/play the idle video from 6 seconds
+            idleVideo.currentTime = 6;
             const playPromise = idleVideo.play();
             
             if (playPromise !== undefined) {
