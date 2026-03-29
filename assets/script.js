@@ -164,7 +164,7 @@ const fadeObserver = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".timeline-item, .detail-card, .gallery-container, .rsvp-form-container").forEach(el => {
+    document.querySelectorAll(".timeline-item, .rsvp-form-container").forEach(el => {
         fadeObserver.observe(el);
     });
 });
@@ -186,20 +186,6 @@ class RSVPForm {
             input.addEventListener("blur", () => this.validateField(input));
             input.addEventListener("input", () => this.clearError(input));
         });
-
-        // Add conditional logic for "Children" field based on attendance
-        this.attendanceRadios = this.form.querySelectorAll('input[name="attendance"]');
-        if (this.attendanceRadios.length) {
-            this.attendanceRadios.forEach(radio => {
-                radio.addEventListener('change', () => this.handleAttendanceChange());
-            });
-            // Initial check
-            this.handleAttendanceChange();
-        }
-    }
-
-    handleAttendanceChange() {
-        // No conditional field logic needed (children field removed)
     }
 
     validateField(field) {
@@ -211,8 +197,6 @@ class RSVPForm {
             this.showError(field, "Це поле обов'язкове для заповнення");
             return false;
         }
-
-        // Email validation removed as field is removed
 
         if (name === "phone") {
             if (!value) {
@@ -388,18 +372,6 @@ window.addEventListener("scroll", () => {
     }
 });
 
-/* --- Hero Parallax (Disabled to fix calendar scrolling distance) --- */
-/*
-window.addEventListener("scroll", () => {
-    const offset = window.pageYOffset;
-    const heroContent = document.querySelector(".hero-content");
-
-    if (heroContent) {
-        const translateY = offset * -0.5;
-        heroContent.style.transform = `translateY(${translateY}px)`;
-    }
-});
-*/
 
 /* --- Body Load Class --- */
 window.addEventListener("load", () => {
@@ -454,7 +426,7 @@ setInterval(createFloatingHeart, 3000);
 
 /* --- Click Ripple Effect on Cards --- */
 document.addEventListener("click", (e) => {
-    if (e.target.matches(".detail-card, .timeline-content, .gallery-slide")) {
+    if (e.target.matches(".timeline-content")) {
         createRipple(e);
     }
 });
@@ -508,7 +480,7 @@ rippleStyle.textContent = `
 document.head.appendChild(rippleStyle);
 
 // Add transition to interactive elements
-const interactiveElements = document.querySelectorAll("button, .nav-link, .gallery-btn, .dot, .detail-card, .timeline-item");
+const interactiveElements = document.querySelectorAll("button, .nav-link, .timeline-item");
 interactiveElements.forEach(el => {
     el.style.transition = "all 0.3s ease";
 });
@@ -671,7 +643,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const envelope = document.getElementById('envelope-main');
     const flap = document.getElementById('envelope-flap-top');
     const letter = document.getElementById('envelope-letter');
-    const seal = document.getElementById('envelope-seal');
     const introBg = document.getElementById('intro-bg');
     const body = document.body;
 
@@ -800,23 +771,6 @@ function initHeroAnimations() {
 }
 
 
-/* --- Scroll Indicator Interactivity --- */
-document.addEventListener('DOMContentLoaded', () => {
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    if (scrollIndicator) {
-        scrollIndicator.addEventListener('click', () => {
-            const storySection = document.getElementById('story');
-            if (storySection) {
-                const offset = storySection.offsetTop - 70;
-                window.scrollTo({
-                    top: offset,
-                    behavior: 'smooth'
-                });
-            }
-        });
-        scrollIndicator.style.cursor = 'pointer';
-    }
-});
 
 /* --- Music Toggle Logic --- */
 document.addEventListener('DOMContentLoaded', () => {

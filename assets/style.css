@@ -5,7 +5,6 @@
   --soft-beige: #D8C6BA;
   --warm-ivory: #F7F9FB;
   --dusty-rose: #D8CFC4;
-  /* --deep-slate: #2C3E50; */
   --deep-slate: #3f5872;
 
   --primary-blue: var(--deep-slate);
@@ -112,40 +111,6 @@ body.content-hidden>*:not(#premium-intro) {
   max-width: 600px;
 }
 
-/* Premium Intro & 3D Envelope */
-body.content-hidden {
-  overflow: hidden;
-}
-
-body.content-hidden>*:not(#premium-intro) {
-  display: none !important;
-}
-
-.premium-intro {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 99999;
-  overflow: hidden;
-  background: var(--warm-ivory);
-}
-
-.intro-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('hero-background.webp') center/cover no-repeat;
-  filter: blur(15px) brightness(0.6);
-  transform: scale(1.1);
-  z-index: -1;
-}
 
 .envelope-wrapper {
   position: relative;
@@ -524,7 +489,6 @@ body:not(.content-hidden) .footer {
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, rgba(70, 128, 179, 1) 0%, rgba(179, 200, 224, 1) 50%, rgba(70, 128, 179, 1) 100%);
-  /* background: linear-gradient(90deg, var(--accent-blue) 0%, var(--primary-blue) 50%, var(--secondary-blue) 100%); */
   opacity: 0.8;
   z-index: -1
 }
@@ -823,51 +787,6 @@ section {
   line-height: 1.8
 }
 
-/* Old Program styles removed because they conflict with snake-program.css */
-
-.details {
-  background-color: var(--secondary-blue);
-  padding-top: 2rem;
-}
-
-.details-accent {
-  position: relative
-}
-
-.details-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
-  gap: 2rem;
-  margin-bottom: 4rem
-}
-
-.detail-card {
-  padding: 2rem;
-  border-radius: var(--border-radius-20);
-  text-align: center
-}
-
-.card-icon {
-  width: 5rem;
-  height: 5rem;
-  background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem;
-  color: var(--white);
-  font-size: 2rem
-}
-
-.detail-card h3 {
-  font-size: 1.5rem;
-
-}
-
-.detail-card p {
-  margin-bottom: .5rem
-}
 
 .map-container {
   background: transparent;
@@ -1117,7 +1036,6 @@ section {
 }
 
 .footer {
-  /* background: var(--text-dark); */
   background: #405c78;
   color: var(--white);
   text-align: center;
@@ -1133,13 +1051,11 @@ section {
 
 .footer-text h3 {
   font-size: clamp(1.8rem, 6vw, 2.5rem);
-  /* color: var(--primary-blue); */
   margin-bottom: .5rem;
   line-height: 1.2;
 }
 
 .footer-decoration {
-  /*   color: var(--accent-blue); */
   color: #F5EBE3;
   font-size: 1.5rem;
   animation: heartBeat 1.5s infinite;
@@ -1382,19 +1298,6 @@ section {
 
 
 
-/*
-.loading {
-    opacity: 0;
-    animation: fadeIn .5s ease-in-out forwards
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1
-    }
-}
-*/
-
 /* --- Snake Program Styles --- */
 
 .snake-program-section {
@@ -1504,8 +1407,6 @@ section {
 }
 
 .snake-time {
-
-  /* font-style: italic; */
   font-size: 2rem;
   font-weight: 700;
   color: var(--title-font-color);
@@ -1565,7 +1466,6 @@ section {
 .snake-pomegranate {
   position: absolute;
   font-size: 58px;
-  /* color: var(--title-font-color); */
   color: #b12243;
   z-index: 20;
   top: 0;
@@ -2057,9 +1957,6 @@ section {
 }
 
 @media (max-height: 1100px) and (min-width: 600px) {
-  /*   .hero {
-    padding-top: 0rem !important;
-  } */
 
   .hero-title {
     margin-bottom: 1rem;
@@ -2091,9 +1988,6 @@ section {
     padding: 0 1rem;
   }
 
-  /*   .hero-invitation br {
-    display: none !important;
-  } */
 }
 
 @media (max-width: 960px) and (min-width: 600px) {
