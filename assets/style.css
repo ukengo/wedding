@@ -210,35 +210,55 @@ body.content-hidden>*:not(#premium-intro) {
   transform-origin: right;
 }
 
-.envelope-flap-top {
-  background: linear-gradient(135deg, #e1effc, #caddf0);
-  clip-path: polygon(0% 0%, 50% 50%, 100% 0%);
+.top-flap-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
   z-index: 5;
   transform-origin: top;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  transform-style: preserve-3d;
+}
+
+.envelope-flap-top {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(135deg, #e1effc, #caddf0);
+  clip-path: polygon(0% 0%, 50% 50%, 100% 0%);
 }
 
 .envelope-seal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -100%);
-  /* Adjust to sit at the tip of top flap */
-  width: 50px;
-  height: 50px;
-  background: var(--accent-blue);
-  /* Wax seal color */
+  transform: translate(-50%, -50%);
+  /* Centered exactly over the flaps converging point */
+  width: 60px;
+  height: 60px;
+  background: var(--white);
+  border: 2px solid var(--accent-blue);
+  /* Wax seal appearance */
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 1.2rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  z-index: 10;
+  z-index: 100;
   transition: opacity 0.3s ease;
+  overflow: hidden;
+  padding: 8px; /* Give logo some breathing room inside the circle */
+}
+
+.seal-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 101;
 }
 
 .envelope-letter {

@@ -703,14 +703,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Step 1: Break seal and open flap
-        tl.to(seal, { opacity: 0, duration: 0.4 })
-          .to(flap, { 
+        // Step 1: Open flap
+        tl.to(flap, { 
               rotateX: 90, 
               duration: 1.8, 
               ease: "power2.in",
               z: 2 // Ensure it stays on top during rotation
-          }, "<") // Start immediately with seal fade
+          })
           .set(flap, { zIndex: 1, z: 0 })
           .to(flap, { 
               rotateX: 180, 
