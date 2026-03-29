@@ -703,26 +703,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Step 1: Break seal and open flap simultaneously
+        // Step 1: Break seal and open flap
         tl.to(seal, { opacity: 0, duration: 0.4 })
           .to(flap, { 
-              rotateX: 180, 
-              duration: 3.6, 
-              ease: "power2.inOut",
+              rotateX: 90, 
+              duration: 1.8, 
+              ease: "power2.in",
               z: 2 // Ensure it stays on top during rotation
           }, "<") // Start immediately with seal fade
+          .set(flap, { zIndex: 1, z: 0 })
+          .to(flap, { 
+              rotateX: 180, 
+              duration: 1.8, 
+              ease: "power2.out"
+          })
           
-          // Step 2: Letter rises slowly to 50% height
+          // Step 2: Letter rises slowly
           .to(letter, { 
               y: "-55%", 
               duration: 3.0, 
-              ease: "power2.inOut",
-              zIndex: 100, // Very high z-index
-              z: 50  // Physically move to front in 3D space
+              ease: "power2.inOut"
           }, "-=1.5") // Start rising as soon as flap is mostly open
 
-          // Step 3: Mega Zoom into the letter / site
-          .to(letter, {
+          // Step 3: Mega Zoom into the envelope and letter / site
+          .to(envelope, {
               scale: 8,
               opacity: 0,
               duration: 2,

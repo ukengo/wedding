@@ -193,18 +193,21 @@ body.content-hidden>*:not(#premium-intro) {
   /* Slightly darker */
   clip-path: polygon(0% 100%, 50% 50%, 100% 100%);
   z-index: 4;
+  transform-origin: bottom;
 }
 
 .envelope-flap-left {
   background: linear-gradient(135deg, #f0f7ff, #e0effc);
   clip-path: polygon(0% 0%, 50% 50%, 0% 100%);
   z-index: 4;
+  transform-origin: left;
 }
 
 .envelope-flap-right {
   background: linear-gradient(135deg, #f0f7ff, #e0effc);
   clip-path: polygon(100% 0%, 50% 50%, 100% 100%);
   z-index: 4;
+  transform-origin: right;
 }
 
 .envelope-flap-top {
