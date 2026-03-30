@@ -1585,7 +1585,16 @@ section {
   font-size: 2.2rem;
   color: var(--accent-blue);
   font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
 }
+
+@media (hover: hover) {
+  .organizer-name:hover {
+    opacity: 0.75;
+  }
+}
+
 
 .organizer-phone,
 .organizer-phone:visited,
@@ -2002,3 +2011,58 @@ section {
     object-position: center top;
   }
 }
+
+/* --- Hero Scroll Hint --- */
+.hero-scroll-hint {
+  position: fixed;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  color: white;
+  text-decoration: none;
+  z-index: 500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.hero-scroll-hint.visible {
+  opacity: 0.9;
+  pointer-events: auto;
+}
+
+.hero-scroll-hint.hidden {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.hero-scroll-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-family: 'Tenor Sans', sans-serif;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+}
+
+.hero-scroll-arrow {
+  width: 30px;
+  height: 30px;
+  filter: drop-shadow(0 1px 5px rgba(0,0,0,0.5));
+  animation: heroScrollBounce 1.6s ease-in-out infinite;
+}
+
+@keyframes heroScrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(7px); }
+}
+
+@media (hover: hover) {
+  .hero-scroll-hint:hover {
+    opacity: 1;
+  }
+}
+

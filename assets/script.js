@@ -370,6 +370,16 @@ window.addEventListener("scroll", () => {
         navbar.style.background = "rgba(255, 255, 255, 0.95)";
         navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
     }
+
+    // Hide scroll hint when user scrolls past hero
+    const hint = document.getElementById('hero-scroll-hint');
+    if (hint) {
+        const hero = document.getElementById('home');
+        const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
+        if (heroBottom < window.innerHeight * 0.5) {
+            hint.classList.remove('visible');
+        }
+    }
 });
 
 
@@ -767,7 +777,11 @@ function initHeroAnimations() {
             opacity: 0, 
             scale: 0.95, 
             duration: 1.2 
-        }, "-=0.8");
+        }, "-=0.8")
+        .call(() => {
+            const hint = document.getElementById('hero-scroll-hint');
+            if (hint) hint.classList.add('visible');
+        }, null, "+=0.5");
 }
 
 
