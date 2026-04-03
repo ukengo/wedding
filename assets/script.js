@@ -359,29 +359,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* --- Navbar Scroll Effect --- */
-let heroScrollHintDismissed = false;
-
-function updateHeroScrollHint() {
-    const hint = document.getElementById("hero-scroll-hint");
-    if (!hint) return;
-
-    const story = document.getElementById("story");
-    const hasScrolledPastIntro = window.scrollY > 40;
-    const storyReached = story ? story.getBoundingClientRect().top <= window.innerHeight * 0.85 : false;
-
-    if (hasScrolledPastIntro) {
-        heroScrollHintDismissed = true;
-    }
-
-    if (heroScrollHintDismissed || storyReached) {
-        hint.classList.remove("visible");
-        hint.classList.add("hidden");
-    } else {
-        hint.classList.remove("hidden");
-        hint.classList.add("visible");
-    }
-}
-
 window.addEventListener("scroll", () => {
     const navbar = document.querySelector(".navbar");
     if (!navbar) return;
@@ -393,7 +370,16 @@ window.addEventListener("scroll", () => {
         navbar.style.background = "rgba(255, 255, 255, 0.95)";
         navbar.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
     }
-    updateHeroScrollHint();
+
+    // Hide scroll hint when user scrolls past hero
+    const hint = document.getElementById('hero-scroll-hint');
+    if (hint) {
+        const hero = document.getElementById('home');
+        const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
+        if (heroBottom < window.innerHeight * 0.5) {
+            hint.classList.remove('visible');
+        }
+    }
 });
 
 
@@ -413,18 +399,6 @@ function handleScrollFade() {
 }
 window.addEventListener("scroll", handleScrollFade);
 document.addEventListener("DOMContentLoaded", handleScrollFade);
-document.addEventListener("DOMContentLoaded", () => {
-    const hint = document.getElementById("hero-scroll-hint");
-    if (hint) {
-        hint.addEventListener("click", () => {
-            heroScrollHintDismissed = true;
-            hint.classList.remove("visible");
-            hint.classList.add("hidden");
-        });
-    }
-
-    updateHeroScrollHint();
-});
 
 /* --- Floating Hearts Animation --- */
 function createFloatingHeart() {
@@ -805,7 +779,8 @@ function initHeroAnimations() {
             duration: 1.2 
         }, "-=0.8")
         .call(() => {
-            updateHeroScrollHint();
+            const hint = document.getElementById('hero-scroll-hint');
+            if (hint) hint.classList.add('visible');
         }, null, "+=0.5");
 }
 
